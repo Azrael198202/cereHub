@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "blueprint_id",
+    "blueprint_type",
+    "version",
+    "agent_role",
+    "display_name",
+    "description",
+    "supported_intents",
+    "capabilities",
+    "tool_requirements",
+    "input_contract",
+    "output_contract",
+    "execution_policies",
+    "collaboration_rules",
+    "status"
+  ],
+  "properties": {
+    "blueprint_id": {
+      "type": "string"
+    },
+    "blueprint_type": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "agent_role": {
+      "type": "string"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "supported_intents": {
+      "type": "array"
+    },
+    "capabilities": {
+      "type": "array"
+    },
+    "tool_requirements": {
+      "type": "array"
+    },
+    "input_contract": {
+      "type": "object"
+    },
+    "output_contract": {
+      "type": "object"
+    },
+    "execution_policies": {
+      "type": "object"
+    },
+    "collaboration_rules": {
+      "type": "object"
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
