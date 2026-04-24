@@ -9,12 +9,10 @@ from core.contracts.runtime_resource import RuntimeResource
 class ResourcePlanBuilder:
     """Builds generic installation or preparation plans for runtime resources."""
 
-    def build_plan(self, resource: RuntimeResource, detection: dict) -> InstallPlan:
+    def build_plan(self, resource: RuntimeResource, detection: dict, *, force: bool = False) -> InstallPlan:
         """Build a preparation plan based on resource metadata and detection result."""
 
-        commands: list[InstallCommand] = []
-
-        if detection.get("installed"):
+        if detection.get("installed") and not force:
             return InstallPlan(
                 resource_id=resource.resource_id,
                 resource_type=resource.resource_type,
@@ -23,6 +21,8 @@ class ResourcePlanBuilder:
                 reason="Resource already appears to be available.",
                 commands=[],
             )
+
+        commands: list[InstallCommand] = []
 
         if resource.install_commands:
             commands.extend(
@@ -43,11 +43,21 @@ class ResourcePlanBuilder:
             resource_type=resource.resource_type,
             resource_name=resource.name,
             plan_required=bool(commands),
-            reason="Resource is missing or not verified.",
+            reason="Resource is missing or forced preparation was requested.",
             commands=commands,
         )
 
     def _build_default_commands(self, resource: RuntimeResource) -> list[InstallCommand]:
+        if resource.resource_type == "local_model" and resource.provider == "ollama":
+            return [
+                InstallCommand(
+                    name=f"ollama_pull_{resource.name}",
+                    command=["ollama", "pull", resource.name],
+                    risky=False,
+                    reason="Pull local model through Ollama.",
+                )
+            ]
+
         if resource.resource_type == "python_package":
             return [
                 InstallCommand(
@@ -58,68 +68,31 @@ class ResourcePlanBuilder:
                 )
             ]
 
-        if resource.resource_type == "node_package":
-            return [
-                InstallCommand(
-                    name=f"npm_install_{resource.name}",
-                    command=["npm", "install", "-g", resource.name],
-                    risky=True,
-                    reason="Install Node package globally.",
-                )
-            ]
-
-        if resource.resource_type == "browser_runtime" and resource.provider == "playwright":
-            return [
-                InstallCommand(
-                    name=f"playwright_install_{resource.name}",
-                    command=["python", "-m", "playwright", "install", resource.name],
-                    risky=False,
-                    reason="Install Playwright browser runtime.",
-                )
-            ]
-
-        if resource.resource_type == "local_model" and resource.provider == "ollama":
-            # This prepares model only. Provider installation should be a separate software resource.
-            return [
-                InstallCommand(
-                    name=f"ollama_pull_{resource.name}",
-                    command=["ollama", "pull", resource.name],
-                    risky=False,
-                    reason="Pull local model through Ollama.",
-                )
-            ]
-
-        if resource.resource_type in ["cli_tool", "software"]:
+        if resource.resource_type in ["cli_tool", "software", "system_dependency"]:
             return self._system_package_hint(resource)
 
         return []
 
     def _system_package_hint(self, resource: RuntimeResource) -> list[InstallCommand]:
         system = platform.system().lower()
-        if system == "linux":
+
+        if resource.name == "ollama" and system == "linux":
             return [
                 InstallCommand(
-                    name=f"install_{resource.name}_linux_hint",
-                    command=["echo", f"Install {resource.name} using apt/yum/dnf according to your OS policy."],
-                    risky=False,
-                    reason="Generic Linux install hint. Avoid automatic package manager changes by default.",
+                    name="install_ollama_linux",
+                    command=["curl", "-fsSL", "https://ollama.com/install.sh", "|", "sh"],
+                    requires_shell=True,
+                    risky=True,
+                    reason="Install Ollama on Linux using official install script.",
                 )
             ]
-        if system == "darwin":
-            return [
-                InstallCommand(
-                    name=f"install_{resource.name}_macos_hint",
-                    command=["echo", f"Install {resource.name} using brew or official installer."],
-                    risky=False,
-                    reason="Generic macOS install hint.",
-                )
-            ]
+
         return [
             InstallCommand(
                 name=f"install_{resource.name}_manual_hint",
-                command=["echo", f"Manual installation required for {resource.name}."],
+                command=["echo", f"Install {resource.name} manually or define install_commands."],
                 risky=False,
-                reason="Unsupported OS for automatic installation.",
+                reason="Generic install hint.",
             )
         ]
 

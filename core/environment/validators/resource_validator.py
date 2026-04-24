@@ -15,9 +15,12 @@ class ResourceValidator:
 
         detection = self.detector.detect(resource)
 
-        ready = bool(detection.get("installed"))
-        if resource.healthcheck_url:
-            ready = ready and bool(detection.get("api_ready"))
+        if resource.resource_type == "local_model":
+            ready = bool(detection.get("installed"))
+        else:
+            ready = bool(detection.get("installed"))
+            if resource.healthcheck_url:
+                ready = ready and bool(detection.get("api_ready"))
 
         return {
             "resource_ready": ready,

@@ -3,24 +3,28 @@
     "primary": {
       "provider": "ollama",
       "model": "qwen3:4b",
-      "temperature": 0.1
+      "temperature": 0.1,
+      "min_confidence": 0.5
     },
     "fallback": {
       "provider": "mock",
-      "model": "mock-intent"
+      "model": "mock-intent",
+      "min_confidence": 0.5
     }
   },
   "chat": {
     "primary": {
       "provider": "openai",
       "model": "gpt-4o-mini",
-      "temperature": 0.3
+      "temperature": 0.3,
+      "min_confidence": 0.5
     }
   },
   "workflow": {
     "primary": {
       "provider": "ollama",
-      "model": "qwen3:8b"
+      "model": "qwen3:8b",
+      "min_confidence": 0.5
     }
   }
 }

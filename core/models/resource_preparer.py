@@ -13,7 +13,13 @@ class ModelResourcePreparer:
         self.workflow = PrepareRuntimeResourceWorkflow()
         self.model_registry = ModelRuntimeRegistry()
 
-    def prepare(self, provider: str, model: str, prepare_runtime: bool = True) -> dict:
+    def prepare(
+        self,
+        provider: str,
+        model: str,
+        prepare_runtime: bool = True,
+        force: bool = False,
+    ) -> dict:
         """Prepare provider runtime and model before a model call."""
 
         if not prepare_runtime:
@@ -25,9 +31,8 @@ class ModelResourcePreparer:
             }
 
         if provider == "ollama":
-            return self._prepare_ollama(model)
+            return self._prepare_ollama(model=model, force=force)
 
-        # External providers usually require API keys, not local installation.
         return {
             "provider_ready": True,
             "model_ready": True,
@@ -35,7 +40,7 @@ class ModelResourcePreparer:
             "model_result": {},
         }
 
-    def _prepare_ollama(self, model: str) -> dict:
+    def _prepare_ollama(self, model: str, force: bool = False) -> dict:
         api_base = SETTINGS["ollama"]["api_base"].rstrip("/")
 
         provider_resource = RuntimeResource(
@@ -64,8 +69,8 @@ class ModelResourcePreparer:
             metadata={"role": "local_llm_model"},
         )
 
-        provider_result = self.workflow.run(provider_resource)
-        model_result = self.workflow.run(model_resource)
+        provider_result = self.workflow.run(provider_resource, force=force)
+        model_result = self.workflow.run(model_resource, force=force)
 
         payload = {
             "ready": provider_result.ready and model_result.ready,

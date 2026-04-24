@@ -14,10 +14,9 @@ class ResourceDetector:
     def detect(self, resource: RuntimeResource) -> dict:
         """Return a generic detection result for the resource."""
 
+        health = {"api_ready": None, "details": {}}
         if resource.healthcheck_url:
             health = self._check_health_url(resource.healthcheck_url)
-        else:
-            health = {"api_ready": None, "details": {}}
 
         command_available = None
         command_result = None
@@ -29,8 +28,7 @@ class ResourceDetector:
             command_available = shutil.which(resource.name) is not None
 
         if resource.resource_type == "local_model":
-            # Local model readiness usually depends on provider health plus model listing.
-            installed = bool(health.get("api_ready"))
+            installed = self._local_model_available(resource, health)
         elif command_available is not None:
             installed = command_available
         else:
@@ -48,20 +46,38 @@ class ResourceDetector:
             "details": health.get("details", {}),
         }
 
+    def _local_model_available(self, resource: RuntimeResource, health: dict) -> bool:
+        """Check local model availability by provider-specific model list."""
+
+        if resource.provider == "ollama":
+            if not health.get("api_ready"):
+                return False
+
+            models = health.get("details", {}).get("models", [])
+            names: set[str] = set()
+
+            for item in models:
+                if not isinstance(item, dict):
+                    continue
+                name = item.get("name")
+                model = item.get("model")
+                if name:
+                    names.add(name)
+                    names.add(name.replace(":latest", ""))
+                if model:
+                    names.add(model)
+                    names.add(model.replace(":latest", ""))
+
+            return resource.name in names
+
+        return bool(health.get("api_ready"))
+
     def _run_verification_command(self, command: list[str]) -> dict:
         try:
             proc = subprocess.run(command, capture_output=True, text=True, timeout=10)
-            return {
-                "return_code": proc.returncode,
-                "stdout": proc.stdout,
-                "stderr": proc.stderr,
-            }
+            return {"return_code": proc.returncode, "stdout": proc.stdout, "stderr": proc.stderr}
         except Exception as exc:
-            return {
-                "return_code": -1,
-                "stdout": "",
-                "stderr": str(exc),
-            }
+            return {"return_code": -1, "stdout": "", "stderr": str(exc)}
 
     def _check_health_url(self, url: str) -> dict:
         try:

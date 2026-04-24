@@ -1,7 +1,7 @@
-''' Ollama provider implementation using LiteLLM.'''
 from __future__ import annotations
 
 import json
+import re
 from typing import Any
 
 from litellm import completion
@@ -22,6 +22,8 @@ class OllamaProvider(BaseModelProvider):
         user_prompt: str,
         temperature: float = 0.1,
     ) -> dict[str, Any]:
+        """Call Ollama through LiteLLM and parse JSON output."""
+
         response = completion(
             model=f"ollama/{model}",
             api_base=self.api_base,
@@ -34,4 +36,25 @@ class OllamaProvider(BaseModelProvider):
         content = response.choices[0].message.content
         if not content:
             raise ValueError("Empty model response")
-        return json.loads(content)
+
+        return self._parse_json(content)
+
+    def _parse_json(self, content: str) -> dict[str, Any]:
+        """Parse a JSON object from model output."""
+
+        cleaned = content.strip()
+        if cleaned.startswith("```"):
+            cleaned = re.sub(r"^```(?:json)?", "", cleaned).strip()
+            cleaned = re.sub(r"```$", "", cleaned).strip()
+
+        try:
+            return json.loads(cleaned)
+        except json.JSONDecodeError:
+            pass
+
+        start = cleaned.find("{")
+        end = cleaned.rfind("}")
+        if start >= 0 and end > start:
+            return json.loads(cleaned[start:end + 1])
+
+        raise ValueError(f"Model output is not valid JSON: {content[:300]}")

@@ -11,10 +11,12 @@ from core.environment.executor.resource_plan_executor import ResourcePlanExecuto
 from core.environment.planner.resource_plan_builder import ResourcePlanBuilder
 from core.environment.registry.resource_registry import RuntimeResourceRegistry
 from core.environment.validators.resource_validator import ResourceValidator
-from core.environment.workflows.trace import WorkflowTraceRecorder
+from core.brain.trace.recorder import build_trace
+from core.brain.trace.store import TraceStore
 
 
 WORKFLOW_ID = "wf_prepare_runtime_resource"
+ENV_INTENT_ID = "intent_runtime_resource_preparation"
 
 
 class PrepareRuntimeResourceWorkflow:
@@ -26,68 +28,41 @@ class PrepareRuntimeResourceWorkflow:
         self.executor = ResourcePlanExecutor()
         self.validator = ResourceValidator()
         self.registry = RuntimeResourceRegistry()
-        self.trace = WorkflowTraceRecorder()
+        self.trace_store = TraceStore()
 
-    def run(self, resource: RuntimeResource) -> ResourcePreparationResult:
+    def run(self, resource: RuntimeResource, *, force: bool = False) -> ResourcePreparationResult:
         """Run the resource preparation workflow."""
 
-        detected = self.detector.detect(resource)
-        self.trace.record(
-            WORKFLOW_ID,
-            "task_detect_resource",
-            1,
-            "detect_resource",
-            "success",
-            resource.model_dump(),
-            detected,
-        )
+        traces = []
 
-        plan = self.planner.build_plan(resource, detected)
-        self.trace.record(
-            WORKFLOW_ID,
-            "task_generate_preparation_plan",
-            2,
-            "generate_preparation_plan",
-            "success",
-            detected,
-            plan.model_dump(),
-        )
+        detected = self.detector.detect(resource)
+        traces.append(self._trace(1, "task_detect_resource", "detect_resource", resource.model_dump(), detected, "success"))
+
+        plan = self.planner.build_plan(resource, detected, force=force)
+        traces.append(self._trace(2, "task_generate_preparation_plan", "generate_preparation_plan", detected, plan.model_dump(), "success"))
 
         permission_output = {
             "allowed_by_policy": True,
             "note": "Risky commands are still blocked unless NESTHUB_ALLOW_INSTALL=true.",
+            "force": force,
         }
-        self.trace.record(
-            WORKFLOW_ID,
-            "task_permission_gate",
-            3,
-            "permission_gate",
-            "success",
-            plan.model_dump(),
-            permission_output,
-        )
+        traces.append(self._trace(3, "task_permission_gate", "permission_gate", plan.model_dump(), permission_output, "success"))
 
         command_results = self.executor.execute(plan)
-        self.trace.record(
-            WORKFLOW_ID,
-            "task_execute_preparation_plan",
-            4,
-            "execute_preparation_plan",
-            "success",
-            plan.model_dump(),
-            {"command_results": [r.model_dump() for r in command_results]},
-        )
+        command_output = {"command_results": [r.model_dump() for r in command_results]}
+        traces.append(self._trace(4, "task_execute_preparation_plan", "execute_preparation_plan", plan.model_dump(), command_output, "success"))
 
         validation = self.validator.validate(resource)
-        self.trace.record(
-            WORKFLOW_ID,
-            "task_verify_resource",
-            5,
-            "verify_resource",
-            "success" if validation["resource_ready"] else "failed",
-            resource.model_dump(),
-            validation,
-            None if validation["resource_ready"] else "Resource is not ready.",
+        traces.append(
+            self._trace(
+                5,
+                "task_verify_resource",
+                "verify_resource",
+                resource.model_dump(),
+                validation,
+                "success" if validation["resource_ready"] else "failed",
+                None if validation["resource_ready"] else "Resource is not ready.",
+            )
         )
 
         capability = self.registry.register(
@@ -98,15 +73,9 @@ class PrepareRuntimeResourceWorkflow:
                 "validation": validation,
             },
         )
-        self.trace.record(
-            WORKFLOW_ID,
-            "task_register_resource",
-            6,
-            "register_resource",
-            "success",
-            validation,
-            {"capability_registered": True, "capability": capability},
-        )
+        traces.append(self._trace(6, "task_register_resource", "register_resource", validation, {"capability_registered": True, "capability": capability}, "success"))
+
+        self.trace_store.append_many(traces)
 
         return ResourcePreparationResult(
             resource_id=resource.resource_id,
@@ -117,7 +86,36 @@ class PrepareRuntimeResourceWorkflow:
             command_results=[r.model_dump() for r in command_results],
             validation=validation,
             capability=capability,
-            traces=self.trace.records,
+            traces=[t.model_dump() for t in traces],
+        )
+
+    def _trace(
+        self,
+        step_index: int,
+        task_id: str,
+        name: str,
+        task_input: dict,
+        task_output: dict,
+        status: str,
+        error_reason: str | None = None,
+    ):
+        return build_trace(
+            workflow_id=WORKFLOW_ID,
+            task_id=task_id,
+            step_index=step_index,
+            intent_id=ENV_INTENT_ID,
+            agent_type="environment_manager_agent",
+            blueprint_id=None,
+            task_input={"name": name, **task_input},
+            task_output=task_output,
+            tool_calls=[],
+            validation_result={
+                "schema_valid": True,
+                "step_goal_met": status == "success",
+                "messages": [],
+            },
+            status=status,
+            error_reason=error_reason,
         )
 
 
@@ -128,11 +126,12 @@ def load_resource(path: str) -> RuntimeResource:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--resource", required=True, help="Path to runtime resource JSON file.")
+    parser.add_argument("--resource", required=True)
+    parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
 
     resource = load_resource(args.resource)
-    result = PrepareRuntimeResourceWorkflow().run(resource)
+    result = PrepareRuntimeResourceWorkflow().run(resource, force=args.force)
     print(json.dumps(result.model_dump(), indent=2, ensure_ascii=False))
 
 
