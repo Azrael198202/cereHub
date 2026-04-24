@@ -45,8 +45,16 @@ def normalize_intent_payload(raw: dict, source_text: str) -> dict:
 
     payload.setdefault("intent_id", new_id("intent"))
     payload.setdefault("description", "")
-    payload.setdefault("entities", {})
-    payload.setdefault("constraints", {})
+
+    payload["entities"] = normalize_object_field(
+        payload.get("entities"),
+        fallback_key="value",
+    )
+    
+    payload["constraints"] = normalize_object_field(
+        payload.get("constraints"),
+        fallback_key="description",
+    )
     payload.setdefault("requires_clarification", False)
     payload.setdefault("clarification_questions", [])
     payload.setdefault("source_text", source_text)
@@ -144,3 +152,21 @@ def normalize_expected_outcome(value: object, intent_type: str) -> list[str]:
         return normalized
 
     return default_expected_outcome(intent_type)
+
+def normalize_object_field(value: object, fallback_key: str = "value") -> dict:
+    """Normalize a model field to object/dict for schema compatibility."""
+
+    if isinstance(value, dict):
+        return value
+
+    if value is None:
+        return {}
+
+    if isinstance(value, list):
+        return {fallback_key: value}
+
+    text = str(value).strip()
+    if not text:
+        return {}
+
+    return {fallback_key: text}
