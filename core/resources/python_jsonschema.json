@@ -1,0 +1,17 @@
+{
+  "resource_id": "res_python_jsonschema",
+  "resource_type": "python_package",
+  "name": "jsonschema",
+  "provider": "pip",
+  "required": true,
+  "install_strategy": [
+    "pip"
+  ],
+  "verification_command": [
+    "python",
+    "-c",
+    "import jsonschema; print(jsonschema.__version__)"
+  ],
+  "dependencies": [],
+  "metadata": {}
+}

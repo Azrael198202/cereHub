@@ -1,0 +1,19 @@
+{
+  "resource_id": "res_ollama_runtime",
+  "resource_type": "software",
+  "name": "ollama",
+  "provider": "ollama",
+  "required": true,
+  "install_strategy": [
+    "install_provider_if_missing"
+  ],
+  "verification_command": [
+    "ollama",
+    "--version"
+  ],
+  "healthcheck_url": "http://localhost:11434/api/tags",
+  "dependencies": [],
+  "metadata": {
+    "role": "local_llm_provider"
+  }
+}

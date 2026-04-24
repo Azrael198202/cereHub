@@ -1,0 +1,108 @@
+.
+├── core
+│   ├── api
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   ├── brain
+│   │   ├── artifacts
+│   │   │   └── registry.py
+│   │   ├── chat
+│   │   │   └── README.md
+│   │   ├── helpers.py
+│   │   ├── __init__.py
+│   │   ├── orchestration
+│   │   │   └── service.py
+│   │   ├── planning
+│   │   │   ├── intent_classifier.py
+│   │   │   └── intent_service.py
+│   │   ├── tools
+│   │   │   ├── builder
+│   │   │   │   └── README.md
+│   │   │   ├── registry
+│   │   │   │   └── README.md
+│   │   │   └── resolver
+│   │   │       └── service.py
+│   │   ├── trace
+│   │   │   ├── evaluator.py
+│   │   │   ├── recorder.py
+│   │   │   └── store.py
+│   │   ├── validation
+│   │   │   └── schema_validator.py
+│   │   └── workflows
+│   │       ├── builder
+│   │       │   └── README.md
+│   │       ├── executor
+│   │       │   ├── readme.md
+│   │       │   └── service.py
+│   │       ├── planner
+│   │       │   ├── readme.md
+│   │       │   ├── service.py
+│   │       │   └── step_builder.py
+│   │       └── state
+│   │           └── README.md
+│   ├── brain_legacy
+│   │   ├── classifier.py
+│   │   ├── executor.py
+│   │   ├── orchestrator.py
+│   │   ├── planner.py
+│   │   └── tool_builder.py
+│   ├── capability
+│   │   ├── registry.py
+│   │   └── resolver.py
+│   ├── config
+│   │   ├── config_loader.py
+│   │   └── models.json
+│   ├── contracts
+│   │   ├── agent.py
+│   │   ├── artifact.py
+│   │   ├── blueprint.py
+│   │   ├── __init__.py
+│   │   ├── install_plan.py
+│   │   ├── intent.py
+│   │   ├── models.py
+│   │   ├── request.py
+│   │   ├── response.py
+│   │   ├── runtime_resource.py
+│   │   ├── task.py
+│   │   ├── tool.py
+│   │   ├── trace.py
+│   │   └── workflow.py
+│   ├── environment
+│   │   ├── detectors
+│   │   ├── executor
+│   │   ├── planner
+│   │   ├── registry
+│   │   └── validators
+│   ├── __init__.py
+│   ├── main.py
+│   ├── models
+│   │   ├── providers
+│   │   │   ├── base.py
+│   │   │   ├── mock_provider.py
+│   │   │   └── ollama_provider.py
+│   │   └── router.py
+│   ├── runtime
+│   │   └── command_runner.py
+│   ├── schemas
+│   │   ├── blueprint.schema.json
+│   │   ├── intent.schema.json
+│   │   ├── README.md
+│   │   ├── tool.schema.json
+│   │   ├── trace.schema.json
+│   │   └── workflow.schema.json
+│   └── validation
+│       └── schema_validator.py
+├── docs
+│   └── 09_workflow
+│       ├── intent_workflow.md
+│       └── work_flow.txt
+├── README.md
+├── requirements.txt
+├── tree.txt
+└── ui
+    ├── app
+    │   └── index.html
+    └── box
+        └── index.html
+
+39 directories, 67 files

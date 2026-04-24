@@ -15,25 +15,38 @@ def build_trace(
     task_output: dict[str, Any],
     tool_calls: list[dict[str, Any]],
     validation_result: dict[str, Any],
+    *,
+    agent_id: Optional[str] = None,
+    status: str = "success",
+    error_reason: Optional[str] = None,
+    retry_count: int = 0,
+    fallback_used: bool = False,
 ) -> TraceModel:
+    """Build a structured trace record.
+
+    This function is shared by normal workflows, agent-creation workflows,
+    tool workflows, model preparation workflows, and environment workflows.
+    """
+
     started = datetime.now(timezone.utc).isoformat()
+
     return TraceModel(
         trace_id=f"trace_{workflow_id}_{step_index}",
         workflow_id=workflow_id,
         task_id=task_id,
         step_index=step_index,
         intent_id=intent_id,
-        agent_id=f"agent_{agent_type}",
+        agent_id=agent_id or f"agent_{agent_type}",
         agent_type=agent_type,
         blueprint_id=blueprint_id,
         tool_calls=tool_calls,
         task_input=task_input,
         task_output=task_output,
         validation_result=validation_result,
-        retry_count=0,
-        fallback_used=False,
-        status="success",
-        error_reason=None,
+        retry_count=retry_count,
+        fallback_used=fallback_used,
+        status=status,
+        error_reason=error_reason,
         started_at=started,
         finished_at=datetime.now(timezone.utc).isoformat(),
     )

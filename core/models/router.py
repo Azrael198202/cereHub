@@ -1,62 +1,80 @@
-''' Router for handling model interactions, including intent classification. '''
-''' This is a simplified example that demonstrates how to route requests to different model providers based on configuration.'''
-from core.config.config_loader import MODELS, SETTINGS
-from core.models.providers.ollama_provider import OllamaProvider
-from core.models.providers.mock_provider import MockProvider
+from __future__ import annotations
+
+from typing import Any
+
+from core.config.config_loader import MODELS
+from core.models.registry.provider_registry import ProviderRegistry
+from core.models.resource_preparer import ModelResourcePreparer
+
 
 class ModelRouter:
-    """Routes requests to different model providers based on configuration."""
+    """Routes model requests through provider registry and runtime preparation."""
 
-    def __init__(self):
-        # In a real implementation, this could be more dynamic and support loading different providers based on configuration.
-        self.providers = {
-            "ollama": OllamaProvider(
-                api_base=SETTINGS["ollama"]["api_base"]
-            ),
-            "mock": MockProvider(),
-        }
+    def __init__(self) -> None:
+        self.provider_registry = ProviderRegistry()
+        self.resource_preparer = ModelResourcePreparer()
 
-    def complete_intent(self, text: str):
-        # This is a simplified routing logic. In a real implementation, 
-        # you might have more complex logic to choose providers and models based on the request context, load, or other factors.  
-        config = MODELS["intent"]
+    def complete_intent(self, text: str) -> dict[str, Any]:
+        """Complete intent classification using configured primary and fallback models."""
 
+        return self.complete_json(task_type="intent", user_prompt=text, system_prompt=self._intent_prompt())
+
+    def complete_json(
+        self,
+        task_type: str,
+        user_prompt: str,
+        system_prompt: str,
+    ) -> dict[str, Any]:
+        """Complete a JSON task using configured model routing."""
+
+        config = MODELS[task_type]
         primary = config["primary"]
         fallback = config.get("fallback")
 
         try:
-            provider = self.providers[primary["provider"]]
-
-            result = provider.complete_json(
-                model=primary["model"],
-                system_prompt=self._intent_prompt(),
-                user_prompt=text,
-                temperature=primary.get("temperature", 0.1),
-            )
-
-            if float(result.get("confidence", 0)) < 0.7:
-                raise ValueError("Low confidence")
-
-            return result
-
-        except Exception as e:
-            print("⚠️ primary model failed:", e)
+            return self._call_model(primary, system_prompt, user_prompt)
+        except Exception as exc:
+            print("primary model failed:", exc)
 
             if fallback:
-                provider = self.providers[fallback["provider"]]
-                return provider.complete_json(
-                    model=fallback["model"],
-                    system_prompt=self._intent_prompt(),
-                    user_prompt=text,
-                )
+                return self._call_model(fallback, system_prompt, user_prompt)
 
             raise
 
-    def _intent_prompt(self):
-        # This prompt is designed to instruct the model to return a JSON object that conforms to the IntentModel schema. 
-        # It emphasizes that the response should be strictly JSON without any additional text or formatting.
+    def _call_model(self, model_config: dict, system_prompt: str, user_prompt: str) -> dict[str, Any]:
+        provider_name = model_config["provider"]
+        model_name = model_config["model"]
+
+        preparation = self.resource_preparer.prepare(
+            provider=provider_name,
+            model=model_name,
+            prepare_runtime=model_config.get("prepare_runtime", True),
+        )
+
+        if not preparation["provider_ready"] or not preparation["model_ready"]:
+            raise RuntimeError(f"Model resource is not ready: {provider_name}/{model_name}")
+
+        provider = self.provider_registry.load(provider_name)
+
+        result = provider.complete_json(
+            model=model_name,
+            system_prompt=system_prompt,
+            user_prompt=user_prompt,
+            temperature=model_config.get("temperature", 0.1),
+        )
+
+        if float(result.get("confidence", 1.0)) < model_config.get("min_confidence", 0.7):
+            raise ValueError("Low confidence model result")
+
+        return result
+
+    def _intent_prompt(self) -> str:
         return (
             "You are an intent classifier.\n"
-            "Return ONLY a valid JSON object.\n"
-            "No markdown, no explanation."
+            "Return ONLY one valid JSON object.\n"
+            "No markdown. No explanation.\n"
+            "The JSON must include: intent_id, intent_type, name, description, confidence, "
+            "entities, constraints, expected_outcome, requires_clarification, "
+            "clarification_questions, source_text.\n"
+            "intent_type must be either normal_intent or agent_creation_intent."
         )

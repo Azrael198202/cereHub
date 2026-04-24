@@ -1,0 +1,21 @@
+{
+  "resource_id": "res_ollama_qwen3_4b",
+  "resource_type": "local_model",
+  "name": "qwen3:4b",
+  "provider": "ollama",
+  "required": true,
+  "install_strategy": [
+    "pull_model"
+  ],
+  "verification_command": [
+    "ollama",
+    "list"
+  ],
+  "healthcheck_url": "http://localhost:11434/api/tags",
+  "dependencies": [
+    "ollama"
+  ],
+  "metadata": {
+    "model_role": "intent"
+  }
+}

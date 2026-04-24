@@ -1,0 +1,182 @@
+{
+  "workflow_id": "wf_prepare_runtime_resource",
+  "workflow_type": "runtime_resource_preparation",
+  "source_intent_id": "intent_prepare_runtime_resource",
+  "name": "prepare_runtime_resource",
+  "status": "draft",
+  "version": "1.0.0",
+  "goal": "Prepare a missing runtime resource required by a workflow, tool, model, or assistant.",
+  "steps": [
+    {
+      "task_id": "task_detect_resource",
+      "step_index": 1,
+      "name": "detect_resource",
+      "task_type": "capability_detection",
+      "objective": "Detect whether the runtime resource exists.",
+      "assigned_agent_type": "environment_manager_agent",
+      "assigned_agent_id": null,
+      "required_tools": [
+        "command_runner"
+      ],
+      "input_schema": "runtime_resource_detection_input",
+      "output_schema": "runtime_resource_detection_output",
+      "depends_on": [],
+      "retry_policy": {
+        "max_retries": 0,
+        "fallback_allowed": false
+      },
+      "validation_rule": {
+        "type": "step_output_validation",
+        "required_fields": [
+          "resource_id",
+          "installed"
+        ]
+      },
+      "status": "pending"
+    },
+    {
+      "task_id": "task_generate_preparation_plan",
+      "step_index": 2,
+      "name": "generate_preparation_plan",
+      "task_type": "environment_planning",
+      "objective": "Generate a controlled preparation plan.",
+      "assigned_agent_type": "environment_manager_agent",
+      "assigned_agent_id": null,
+      "required_tools": [],
+      "input_schema": "resource_plan_input",
+      "output_schema": "resource_plan_output",
+      "depends_on": [
+        "task_detect_resource"
+      ],
+      "retry_policy": {
+        "max_retries": 0,
+        "fallback_allowed": false
+      },
+      "validation_rule": {
+        "type": "step_output_validation",
+        "required_fields": [
+          "plan_required",
+          "commands"
+        ]
+      },
+      "status": "pending"
+    },
+    {
+      "task_id": "task_permission_gate",
+      "step_index": 3,
+      "name": "permission_gate",
+      "task_type": "permission_gate",
+      "objective": "Check whether the preparation plan may be executed.",
+      "assigned_agent_type": "environment_manager_agent",
+      "assigned_agent_id": null,
+      "required_tools": [],
+      "input_schema": "permission_input",
+      "output_schema": "permission_output",
+      "depends_on": [
+        "task_generate_preparation_plan"
+      ],
+      "retry_policy": {
+        "max_retries": 0,
+        "fallback_allowed": false
+      },
+      "validation_rule": {
+        "type": "step_output_validation",
+        "required_fields": [
+          "allowed_by_policy"
+        ]
+      },
+      "status": "pending"
+    },
+    {
+      "task_id": "task_execute_preparation_plan",
+      "step_index": 4,
+      "name": "execute_preparation_plan",
+      "task_type": "environment_installation",
+      "objective": "Execute controlled preparation commands.",
+      "assigned_agent_type": "environment_manager_agent",
+      "assigned_agent_id": null,
+      "required_tools": [
+        "command_runner"
+      ],
+      "input_schema": "execute_plan_input",
+      "output_schema": "execute_plan_output",
+      "depends_on": [
+        "task_permission_gate"
+      ],
+      "retry_policy": {
+        "max_retries": 1,
+        "fallback_allowed": false
+      },
+      "validation_rule": {
+        "type": "step_output_validation",
+        "required_fields": [
+          "command_results"
+        ]
+      },
+      "status": "pending"
+    },
+    {
+      "task_id": "task_verify_resource",
+      "step_index": 5,
+      "name": "verify_resource",
+      "task_type": "runtime_validation",
+      "objective": "Verify that the resource is available after preparation.",
+      "assigned_agent_type": "environment_manager_agent",
+      "assigned_agent_id": null,
+      "required_tools": [
+        "command_runner"
+      ],
+      "input_schema": "runtime_resource_validation_input",
+      "output_schema": "runtime_resource_validation_output",
+      "depends_on": [
+        "task_execute_preparation_plan"
+      ],
+      "retry_policy": {
+        "max_retries": 1,
+        "fallback_allowed": false
+      },
+      "validation_rule": {
+        "type": "step_output_validation",
+        "required_fields": [
+          "resource_ready"
+        ]
+      },
+      "status": "pending"
+    },
+    {
+      "task_id": "task_register_resource",
+      "step_index": 6,
+      "name": "register_resource",
+      "task_type": "capability_registration",
+      "objective": "Register the prepared runtime resource.",
+      "assigned_agent_type": "environment_manager_agent",
+      "assigned_agent_id": null,
+      "required_tools": [],
+      "input_schema": "runtime_resource_registration_input",
+      "output_schema": "runtime_resource_registration_output",
+      "depends_on": [
+        "task_verify_resource"
+      ],
+      "retry_policy": {
+        "max_retries": 0,
+        "fallback_allowed": false
+      },
+      "validation_rule": {
+        "type": "step_output_validation",
+        "required_fields": [
+          "capability_registered"
+        ]
+      },
+      "status": "pending"
+    }
+  ],
+  "final_validation_rule": {
+    "type": "intent_fulfillment_validation",
+    "required_outcomes": [
+      "resource_detected_or_prepared",
+      "resource_verified",
+      "capability_registered"
+    ]
+  },
+  "metadata": {}
+}

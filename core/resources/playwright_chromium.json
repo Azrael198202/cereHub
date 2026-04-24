@@ -1,0 +1,20 @@
+{
+  "resource_id": "res_playwright_chromium",
+  "resource_type": "browser_runtime",
+  "name": "chromium",
+  "provider": "playwright",
+  "required": true,
+  "install_strategy": [
+    "python_module_command"
+  ],
+  "verification_command": [
+    "python",
+    "-m",
+    "playwright",
+    "--version"
+  ],
+  "dependencies": [
+    "playwright"
+  ],
+  "metadata": {}
+}

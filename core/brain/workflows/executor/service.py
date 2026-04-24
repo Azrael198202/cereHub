@@ -1,3 +1,5 @@
+'''
+Service module for executing workflows based on intents. This module processes each step of the workflow, performs'''
 from typing import Optional
 
 from core.contracts.artifact import ArtifactModel
