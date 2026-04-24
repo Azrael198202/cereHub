@@ -24,3 +24,7 @@ build/
 
 .env
 .codex
+core/runtime/logs/*.log
+
+
+runtime/

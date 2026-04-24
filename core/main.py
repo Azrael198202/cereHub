@@ -8,6 +8,9 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
 from core.api.routes import router as api_router
+from core.runtime.logger import setup_logger
+
+setup_logger()
 
 # Create the FastAPI application instance with metadata
 app = FastAPI(title="cerehub-core", version="0.1.0")
@@ -17,6 +20,7 @@ app.include_router(api_router, prefix="/api")
 
 # Mount the static UI directories so /ui/app/ and /ui/box/ are served
 app.mount("/ui", StaticFiles(directory="ui", html=True), name="ui")
+app.mount("/static", StaticFiles(directory="core/static"), name="static")
 
 
 @app.get("/")

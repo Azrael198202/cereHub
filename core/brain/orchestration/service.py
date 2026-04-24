@@ -9,25 +9,35 @@ from core.brain.workflows.executor.service import execute_workflow
 from core.brain.workflows.planner.service import build_workflow
 from core.contracts.request import RuntimeRequest
 from core.contracts.response import RuntimeResponse
+from core.runtime.logger import get_logger
 
+logger = get_logger(__name__)
 
 def handle_request(request: RuntimeRequest) -> RuntimeResponse:
     """
     Main orchestration entry for the core brain.
     """
-    intent = classify_and_validate_intent(request)
+    try:
+        logger.info("[orchestration] start")
 
-    workflow = build_workflow(intent)
-    validate_against("workflow.schema.json", workflow.model_dump())
+        intent = classify_and_validate_intent(request)
+        logger.info(f"[orchestration] intent={intent.name}")
 
-    reply, traces, artifacts, validation = execute_workflow(intent, workflow)
+        workflow = build_workflow(intent)
+        validate_against("workflow.schema.json", workflow.model_dump())
+        logger.info(f"[orchestration] workflow={workflow.name}")
 
-    return RuntimeResponse(
-        status="success",
-        reply=reply,
-        intent=intent.model_dump(),
-        workflow=workflow.model_dump(),
-        traces=traces,
-        artifacts=artifacts,
-        validation=validation,
-    )
+        reply, traces, artifacts, validation = execute_workflow(intent, workflow)
+
+        return RuntimeResponse(
+            status="success",
+            reply=reply,
+            intent=intent.model_dump(),
+            workflow=workflow.model_dump(),
+            traces=traces,
+            artifacts=artifacts,
+            validation=validation,
+        )
+    except Exception:
+        logger.exception("[orchestration] failed")
+        raise
