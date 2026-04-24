@@ -15,6 +15,9 @@ ResourceType = Literal[
     "browser_runtime",
     "system_dependency",
     "tool_code",
+    "huggingface_model",
+    "gguf_model",
+    "transformers_model"
 ]
 
 

@@ -1,30 +1,73 @@
 {
   "intent": {
-    "primary": {
-      "provider": "ollama",
-      "model": "qwen3:4b",
-      "temperature": 0.1,
-      "min_confidence": 0.5
-    },
-    "fallback": {
-      "provider": "mock",
-      "model": "mock-intent",
-      "min_confidence": 0.5
-    }
-  },
-  "chat": {
-    "primary": {
-      "provider": "openai",
-      "model": "gpt-4o-mini",
-      "temperature": 0.3,
-      "min_confidence": 0.5
-    }
+    "strategy": "first_success",
+    "candidates": [
+      {
+        "name": "qwen3_4b",
+        "provider": "ollama",
+        "model": "qwen3:4b",
+        "temperature": 0.1,
+        "min_confidence": 0.5,
+        "prepare_runtime": true
+      },
+      {
+        "name": "qwen3_4b_instruct",
+        "provider": "ollama",
+        "model": "qwen3:4b-instruct",
+        "temperature": 0.1,
+        "min_confidence": 0.5,
+        "prepare_runtime": true
+      },
+      {
+        "name": "mock_intent",
+        "provider": "mock",
+        "model": "mock-intent",
+        "temperature": 0.1,
+        "min_confidence": 0.5,
+        "prepare_runtime": false
+      }
+    ]
   },
   "workflow": {
-    "primary": {
-      "provider": "ollama",
-      "model": "qwen3:8b",
-      "min_confidence": 0.5
-    }
+    "strategy": "first_success",
+    "candidates": [
+      {
+        "name": "qwen3_8b",
+        "provider": "ollama",
+        "model": "qwen3:8b",
+        "temperature": 0.1,
+        "min_confidence": 0.5,
+        "prepare_runtime": true
+      },
+      {
+        "name": "deepseek_r1_7b",
+        "provider": "ollama",
+        "model": "deepseek-r1:7b",
+        "temperature": 0.1,
+        "min_confidence": 0.5,
+        "prepare_runtime": true
+      }
+    ]
+  },
+  "chat": {
+    "strategy": "first_success",
+    "candidates": [
+      {
+        "name": "openai",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "temperature": 0.3,
+        "min_confidence": 0.5,
+        "prepare_runtime": true
+      },
+      {
+        "name": "deepseek_r1_7b",
+        "provider": "ollama",
+        "model": "deepseek-r1:7b",
+        "temperature": 0.1,
+        "min_confidence": 0.5,
+        "prepare_runtime": true
+      }
+    ]
   }
 }

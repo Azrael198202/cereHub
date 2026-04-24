@@ -159,7 +159,7 @@
         "command_available": true,
         "command_result": {
           "return_code": 0,
-          "stdout": "NAME                   ID              SIZE      MODIFIED       \nqwen3:4b               359d7dd4bcda    2.5 GB    12 minutes ago    \nqwen3-coder:30b        06c1097efce0    18 GB     11 days ago       \nqwen2.5:3b-instruct    357c53fb659c    1.9 GB    3 months ago      \nqwen2.5:7b-instruct    845dbda0ea48    4.7 GB    3 months ago      \n",
+          "stdout": "NAME                   ID              SIZE      MODIFIED       \nqwen3:4b               359d7dd4bcda    2.5 GB    26 minutes ago    \nqwen3-coder:30b        06c1097efce0    18 GB     11 days ago       \nqwen2.5:3b-instruct    357c53fb659c    1.9 GB    3 months ago      \nqwen2.5:7b-instruct    845dbda0ea48    4.7 GB    3 months ago      \n",
           "stderr": ""
         },
         "details": {

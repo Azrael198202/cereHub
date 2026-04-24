@@ -1,0 +1,27 @@
+{
+  "resource_id": "res_hf_qwen2_5_7b_instruct",
+  "provider": "huggingface",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "display_name": "Qwen2.5 7B Instruct",
+  "local_path": "runtime/models/huggingface/Qwen_Qwen2.5-7B-Instruct",
+  "format": "transformers",
+  "capabilities": [
+    "intent",
+    "workflow",
+    "chat"
+  ],
+  "recommended_tasks": [
+    "intent",
+    "workflow"
+  ],
+  "tags": [
+    "local",
+    "multilingual",
+    "json",
+    "instruct"
+  ],
+  "status": "draft",
+  "metadata": {
+    "note": "Large model. GPU recommended."
+  }
+}
