@@ -12,14 +12,14 @@ from core.brain.trace.recorder import build_trace
 from core.brain.validation.schema_validator import validate_against
 
 
-def execute_workflow(intent: IntentModel, workflow: WorkflowModel) -> tuple[str, list[dict], list[dict], dict]:
+async def execute_workflow(intent: IntentModel, workflow: WorkflowModel) -> tuple[str, list[dict], list[dict], dict]:
     traces: list[dict] = []
     artifacts: list[ArtifactModel] = []
     reply = ""
     blueprint: Optional[BlueprintModel] = None
 
-    validate_against("intent.schema.json", intent.model_dump())
-    validate_against("workflow.schema.json", workflow.model_dump())
+    await validate_against("intent.schema.json", intent.model_dump())
+    await validate_against("workflow.schema.json", workflow.model_dump())
 
     for step in workflow.steps:
         task_output: dict = {}
@@ -44,12 +44,12 @@ def execute_workflow(intent: IntentModel, workflow: WorkflowModel) -> tuple[str,
                 collaboration_rules={"can_delegate_to": [], "can_receive_from": []},
                 status="registered",
             )
-            validate_against("blueprint.schema.json", blueprint.model_dump())
+            await validate_against("blueprint.schema.json", blueprint.model_dump())
             task_output = blueprint.model_dump()
             artifacts.append(ArtifactModel(id=blueprint.blueprint_id, type="blueprint", source_intent=intent.name, source_task=step.name, version=blueprint.version, status="registered", runnable=True, registered_at="runtime"))
 
         elif step.name == "resolve_tools":
-            resolved, tool_artifacts = resolve_or_build_tools(intent.entities.get("required_tools", []))
+            resolved, tool_artifacts = await resolve_or_build_tools(intent.entities.get("required_tools", []))
             for item in resolved:
                 fake_tool_payload = {
                     "tool_name": item["tool_name"],
@@ -64,13 +64,13 @@ def execute_workflow(intent: IntentModel, workflow: WorkflowModel) -> tuple[str,
                     "status": "registered",
                     "version": "1.0.0",
                 }
-                validate_against("tool.schema.json", fake_tool_payload)
+                await validate_against("tool.schema.json", fake_tool_payload)
             task_output = {"resolved_tools": resolved}
             artifacts.extend(tool_artifacts)
             tool_calls = [{"tool_name": item["tool_name"], "status": "success", "input_ref": None, "output_ref": None, "error_reason": None} for item in resolved]
 
         elif step.name == "register_artifacts":
-            task_output = {"registered_artifact_ids": register_artifacts(artifacts)}
+            task_output = {"registered_artifact_ids": await register_artifacts(artifacts)}
 
         elif step.name == "analyze_request":
             task_output = {"normalized_request": intent.source_text.strip()}
@@ -79,7 +79,7 @@ def execute_workflow(intent: IntentModel, workflow: WorkflowModel) -> tuple[str,
             reply = f"Handled as normal intent: {intent.name}"
             task_output = {"reply": reply}
 
-        trace = build_trace(
+        trace = await build_trace(
             workflow_id=workflow.workflow_id,
             task_id=step.task_id,
             step_index=step.step_index,
@@ -91,7 +91,7 @@ def execute_workflow(intent: IntentModel, workflow: WorkflowModel) -> tuple[str,
             tool_calls=tool_calls,
             validation_result={"step_goal_met": True, "schema_valid": True, "intent_alignment": True, "messages": []},
         )
-        validate_against("trace.schema.json", trace.model_dump())
+        await validate_against("trace.schema.json", trace.model_dump())
         traces.append(trace.model_dump())
 
     if intent.intent_type == "agent_creation_intent":

@@ -13,25 +13,25 @@ logger = get_logger(__name__)
 router = ModelRouter()
 
 
-def classify_and_validate_intent(request: RuntimeRequest) -> IntentModel:
+async def classify_and_validate_intent(request: RuntimeRequest) -> IntentModel:
     """Classify intent by model, normalize only structural fields, validate schema, and return IntentModel."""
     try:
         logger.info(f"[intent] input={request.text}")
 
-        raw = router.complete_intent(request.text)
+        raw = await router.complete_intent(request.text)
         logger.info(f"[intent] raw={raw}")
 
-        normalized = normalize_intent_payload(raw, request.text)
+        normalized = await normalize_intent_payload(raw, request.text)
         logger.info(f"[intent] normalized={normalized}")
 
-        validate_against("intent.schema.json", normalized)
+        await validate_against("intent.schema.json", normalized)
         return IntentModel(**normalized)
     except Exception as e:
         logger.exception("[intent] failed")
         raise
 
 
-def normalize_intent_payload(raw: dict, source_text: str) -> dict:
+async def normalize_intent_payload(raw: dict, source_text: str) -> dict:
     """Normalize model output to satisfy intent.schema.json.
 
     Important:
@@ -46,12 +46,12 @@ def normalize_intent_payload(raw: dict, source_text: str) -> dict:
     payload.setdefault("intent_id", new_id("intent"))
     payload.setdefault("description", "")
 
-    payload["entities"] = normalize_object_field(
+    payload["entities"] = await normalize_object_field(
         payload.get("entities"),
         fallback_key="value",
     )
     
-    payload["constraints"] = normalize_object_field(
+    payload["constraints"] = await normalize_object_field(
         payload.get("constraints"),
         fallback_key="description",
     )
@@ -59,15 +59,15 @@ def normalize_intent_payload(raw: dict, source_text: str) -> dict:
     payload.setdefault("clarification_questions", [])
     payload.setdefault("source_text", source_text)
 
-    payload["name"] = normalize_schema_name(
+    payload["name"] = await normalize_schema_name(
         payload.get("name")
         or payload.get("intent_name")
         or "general_query"
     )
 
-    payload["intent_type"] = normalize_intent_type(payload.get("intent_type"))
+    payload["intent_type"] = await normalize_intent_type(payload.get("intent_type"))
 
-    payload["expected_outcome"] = normalize_expected_outcome(
+    payload["expected_outcome"] = await normalize_expected_outcome(
         payload.get("expected_outcome"),
         payload["intent_type"],
     )
@@ -83,7 +83,7 @@ def normalize_intent_payload(raw: dict, source_text: str) -> dict:
     return payload
 
 
-def normalize_schema_name(value: object) -> str:
+async def normalize_schema_name(value: object) -> str:
     """Convert a model-generated name into schema-safe snake_case.
 
     Schema requires: ^[a-z][a-z0-9_]*$
@@ -105,7 +105,7 @@ def normalize_schema_name(value: object) -> str:
     return text
 
 
-def normalize_intent_type(value: object) -> str:
+async def normalize_intent_type(value: object) -> str:
     """Normalize intent_type only to supported enum values.
 
     This is not business inference. Unsupported or missing values fall back
@@ -120,7 +120,7 @@ def normalize_intent_type(value: object) -> str:
     return "normal_intent"
 
 
-def default_expected_outcome(intent_type: str) -> list[str]:
+async def default_expected_outcome(intent_type: str) -> list[str]:
     """Return generic default outcomes without domain-specific assumptions."""
 
     if intent_type == "agent_creation_intent":
@@ -132,7 +132,7 @@ def default_expected_outcome(intent_type: str) -> list[str]:
 
     return ["response_generated"]
 
-def normalize_expected_outcome(value: object, intent_type: str) -> list[str]:
+async def normalize_expected_outcome(value: object, intent_type: str) -> list[str]:
     """Normalize expected_outcome to non-empty string array."""
 
     if isinstance(value, str):
@@ -142,18 +142,18 @@ def normalize_expected_outcome(value: object, intent_type: str) -> list[str]:
     else:
         items = []
 
-    normalized = [
-        normalize_schema_name(item)
-        for item in items
-        if str(item).strip()
-    ]
+    normalized: list[str] = []
+    for item in items:
+        if not str(item).strip():
+            continue
+        normalized.append(await normalize_schema_name(item))
 
     if normalized:
         return normalized
 
-    return default_expected_outcome(intent_type)
+    return await default_expected_outcome(intent_type)
 
-def normalize_object_field(value: object, fallback_key: str = "value") -> dict:
+async def normalize_object_field(value: object, fallback_key: str = "value") -> dict:
     """Normalize a model field to object/dict for schema compatibility."""
 
     if isinstance(value, dict):

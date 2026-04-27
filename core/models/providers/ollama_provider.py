@@ -15,7 +15,7 @@ class OllamaProvider(BaseModelProvider):
     def __init__(self, api_base: str = "http://localhost:11434") -> None:
         self.api_base = api_base
 
-    def complete_json(
+    async def complete_json(
         self,
         model: str,
         system_prompt: str,
@@ -24,7 +24,7 @@ class OllamaProvider(BaseModelProvider):
     ) -> dict[str, Any]:
         """Call Ollama through LiteLLM and parse JSON output."""
 
-        response = completion(
+        response = await completion(
             model=f"ollama/{model}",
             api_base=self.api_base,
             temperature=temperature,

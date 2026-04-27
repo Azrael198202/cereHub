@@ -47,12 +47,21 @@
   <script>
     let progressTimer = null;
 
+    function resetRunView() {
+      document.getElementById('reply').textContent = '';
+      document.getElementById('latestProgress').textContent = '';
+      document.getElementById('progress').textContent = '';
+      document.getElementById('raw').textContent = '';
+    }
+
     async function send() {
       const messageEl = document.getElementById('message');
       if (!(messageEl instanceof HTMLTextAreaElement)) return;
 
       const text = messageEl.value;
+      resetRunView();
       setStatus('Running...');
+      await refreshProgress();
       startAutoProgress();
 
       try {

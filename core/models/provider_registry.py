@@ -9,7 +9,7 @@ class ProviderRegistry:
         "mock": "core.models.providers.mock_provider.MockProvider",
     }
 
-    def load(self, provider_name: str, settings: dict):
+    async def load(self, provider_name: str, settings: dict):
         path = self.BUILTIN_PROVIDERS[provider_name]
         module_path, class_name = path.rsplit(".", 1)
 

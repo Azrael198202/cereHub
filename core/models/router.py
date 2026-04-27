@@ -15,23 +15,23 @@ class ModelRouter:
         self.provider_registry = ProviderRegistry()
         self.resource_preparer = ModelResourcePreparer()
 
-    def complete_intent(self, text: str) -> dict[str, Any]:
+    async def complete_intent(self, text: str) -> dict[str, Any]:
         """Complete intent classification."""
 
-        return self.complete_json(
+        return await self.complete_json(
             task_type="intent",
             user_prompt=text,
             system_prompt=self._intent_prompt(),
         )
 
-    def complete_json(self, task_type: str, user_prompt: str, system_prompt: str) -> dict[str, Any]:
+    async def complete_json(self, task_type: str, user_prompt: str, system_prompt: str) -> dict[str, Any]:
         """Complete a JSON task using all candidates."""
 
         last_error: Exception | None = None
 
         for model_config in self.selector.get_candidates(task_type):
             try:
-                return self._call_model(model_config, system_prompt, user_prompt)
+                return await self._call_model(model_config, system_prompt, user_prompt)
             except Exception as exc:
                 last_error = exc
                 print("model failed:", model_config.get("provider"), model_config.get("model"), exc)
@@ -41,11 +41,11 @@ class ModelRouter:
 
         raise RuntimeError(f"No model candidates available for task_type={task_type}")
 
-    def _call_model(self, model_config: dict, system_prompt: str, user_prompt: str) -> dict[str, Any]:
+    async def _call_model(self, model_config: dict, system_prompt: str, user_prompt: str) -> dict[str, Any]:
         provider_name = model_config["provider"]
         model_name = model_config["model"]
 
-        preparation = self.resource_preparer.prepare(
+        preparation = await self.resource_preparer.prepare(
             provider=provider_name,
             model=model_name,
             prepare_runtime=model_config.get("prepare_runtime", True),
@@ -54,9 +54,9 @@ class ModelRouter:
         if not preparation["provider_ready"] or not preparation["model_ready"]:
             raise RuntimeError(f"Model resource is not ready: {provider_name}/{model_name}")
 
-        provider = self.provider_registry.load(provider_name, model_config=model_config)
+        provider = await self.provider_registry.load(provider_name, model_config=model_config)
 
-        result = provider.complete_json(
+        result = await provider.complete_json(
             model=model_name,
             system_prompt=system_prompt,
             user_prompt=user_prompt,

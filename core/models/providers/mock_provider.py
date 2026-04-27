@@ -9,7 +9,7 @@ from core.models.providers.base import BaseModelProvider
 class MockProvider(BaseModelProvider):
     """Fallback mock provider for development and failure cases."""
 
-    def complete_json(
+    async def complete_json(
         self,
         model: str,
         system_prompt: str,

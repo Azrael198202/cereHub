@@ -11,7 +11,7 @@ AGENT_KEYWORDS = [
 ]
 
 
-def classify_intent(text: str) -> IntentModel:
+async def classify_intent(text: str) -> IntentModel:
     lowered = text.lower()
     is_creation = any(keyword in lowered for keyword in AGENT_KEYWORDS)
 

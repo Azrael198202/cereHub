@@ -15,31 +15,31 @@ class ModelInstaller:
         self.registry = ModelRuntimeRegistry()
         self.hf_downloader = HuggingFaceDownloader()
 
-    def install_from_file(self, path: str) -> dict:
+    async def install_from_file(self, path: str) -> dict:
         """Install a model from a model resource JSON file."""
 
         payload = json.loads(Path(path).read_text(encoding="utf-8"))
         resource = ModelResource(**payload)
-        return self.install(resource)
+        return await self.install(resource)
 
-    def install(self, resource: ModelResource) -> dict:
+    async def install(self, resource: ModelResource) -> dict:
         """Install/download a model resource and register it."""
 
         if resource.provider == "huggingface":
-            result = self.hf_downloader.download(resource)
-            return self.registry.register_resource(resource, result)
+            result = await self.hf_downloader.download(resource)
+            return await self.registry.register_resource(resource, result)
 
         raise ValueError(f"Unsupported model provider for installer: {resource.provider}")
 
 
-def main() -> None:
+async def main() -> None:
     import argparse
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--resource", required=True)
     args = parser.parse_args()
 
-    result = ModelInstaller().install_from_file(args.resource)
+    result = await ModelInstaller().install_from_file(args.resource)
     print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

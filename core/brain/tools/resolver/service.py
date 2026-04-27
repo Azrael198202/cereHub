@@ -1,7 +1,7 @@
 from core.contracts.artifact import ArtifactModel
 
 
-def resolve_or_build_tools(required_tools: list[str]) -> tuple[list[dict], list[ArtifactModel]]:
+async def resolve_or_build_tools(required_tools: list[str]) -> tuple[list[dict], list[ArtifactModel]]:
     resolved: list[dict] = []
     artifacts: list[ArtifactModel] = []
 

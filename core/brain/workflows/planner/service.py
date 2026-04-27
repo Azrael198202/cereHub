@@ -7,16 +7,16 @@ from core.contracts.intent import IntentModel
 from core.contracts.workflow import WorkflowModel
 
 
-def build_workflow(intent: IntentModel) -> WorkflowModel:
+async def build_workflow(intent: IntentModel) -> WorkflowModel:
     """Build a workflow using model planner with deterministic fallback."""
 
     try:
-        workflow = ModelWorkflowPlanner().build(intent)
-        validate_against("workflow.schema.json", workflow.model_dump())
+        workflow = await ModelWorkflowPlanner().build(intent)
+        await validate_against("workflow.schema.json", workflow.model_dump())
         return workflow
     except Exception as exc:
         print("workflow model planner failed, fallback to template planner:", exc)
 
-    workflow = build_template_workflow(intent)
-    validate_against("workflow.schema.json", workflow.model_dump())
+    workflow = await build_template_workflow(intent)
+    await validate_against("workflow.schema.json", workflow.model_dump())
     return workflow

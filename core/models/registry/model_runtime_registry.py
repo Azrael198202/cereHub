@@ -14,7 +14,7 @@ class ModelRuntimeRegistry:
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
 
-    def register_resource(self, resource: ModelResource, install_result: ModelInstallResult) -> dict:
+    async def register_resource(self, resource: ModelResource, install_result: ModelInstallResult) -> dict:
         """Register model resource with install result."""
 
         data = self._load()
@@ -35,10 +35,10 @@ class ModelRuntimeRegistry:
             "message": install_result.message,
             "metadata": {**resource.metadata, **install_result.metadata},
         }
-        self._save(data)
+        await self._save(data)
         return data[key]
 
-    def register_ready(self, provider: str, model: str, payload: dict) -> dict:
+    async def register_ready(self, provider: str, model: str, payload: dict) -> dict:
         """Register a provider/model pair as ready or not ready."""
 
         data = self._load()
@@ -51,7 +51,7 @@ class ModelRuntimeRegistry:
             "checked_at": datetime.now(timezone.utc).isoformat(),
             "payload": payload,
         }
-        self._save(data)
+        await self._save(data)
         return data[key]
 
     def list_ready_for_task(self, task_type: str) -> list[dict]:
@@ -79,5 +79,5 @@ class ModelRuntimeRegistry:
             return {}
         return json.loads(self.path.read_text(encoding="utf-8"))
 
-    def _save(self, data: dict) -> None:
+    async def _save(self, data: dict) -> None:
         self.path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")

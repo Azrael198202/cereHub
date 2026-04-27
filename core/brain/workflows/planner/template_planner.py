@@ -6,7 +6,7 @@ from core.contracts.intent import IntentModel
 from core.contracts.workflow import WorkflowModel
 
 
-def build_template_workflow(intent: IntentModel) -> WorkflowModel:
+async def build_template_workflow(intent: IntentModel) -> WorkflowModel:
     """Build a deterministic fallback workflow from intent."""
 
     if intent.intent_type == "agent_creation_intent":

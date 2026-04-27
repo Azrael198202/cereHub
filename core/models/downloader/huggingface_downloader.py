@@ -15,7 +15,7 @@ class HuggingFaceDownloader:
         self.base_dir = Path(base_dir)
         self.base_dir.mkdir(parents=True, exist_ok=True)
 
-    def download(self, resource: ModelResource) -> ModelInstallResult:
+    async def download(self, resource: ModelResource) -> ModelInstallResult:
         """Download a Hugging Face model snapshot and return install result."""
 
         if resource.provider != "huggingface":
@@ -33,7 +33,7 @@ class HuggingFaceDownloader:
         )
 
         try:
-            downloaded_path = snapshot_download(
+            downloaded_path = await snapshot_download(
                 repo_id=resource.model,
                 local_dir=str(local_path),
                 local_dir_use_symlinks=False,

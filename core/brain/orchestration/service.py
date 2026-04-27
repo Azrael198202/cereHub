@@ -13,21 +13,21 @@ from core.runtime.logger import get_logger
 
 logger = get_logger(__name__)
 
-def handle_request(request: RuntimeRequest) -> RuntimeResponse:
+async def handle_request(request: RuntimeRequest) -> RuntimeResponse:
     """
     Main orchestration entry for the core brain.
     """
     try:
         logger.info("[orchestration] start")
 
-        intent = classify_and_validate_intent(request)
+        intent = await classify_and_validate_intent(request)
         logger.info(f"[orchestration] intent={intent.name}")
 
-        workflow = build_workflow(intent)
-        validate_against("workflow.schema.json", workflow.model_dump())
+        workflow = await build_workflow(intent)
+        await validate_against("workflow.schema.json", workflow.model_dump())
         logger.info(f"[orchestration] workflow={workflow.name}")
 
-        reply, traces, artifacts, validation = execute_workflow(intent, workflow)
+        reply, traces, artifacts, validation = await execute_workflow(intent, workflow)
 
         return RuntimeResponse(
             status="success",

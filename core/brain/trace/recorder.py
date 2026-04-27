@@ -4,7 +4,7 @@ from typing import Any, Optional
 from core.contracts.trace import TraceModel
 
 
-def build_trace(
+async def build_trace(
     workflow_id: str,
     task_id: str,
     step_index: int,

@@ -10,7 +10,7 @@ class BaseModelProvider(ABC):
     """Abstract interface for model providers."""
 
     @abstractmethod
-    def complete_json(
+    async def complete_json(
         self,
         model: str,
         system_prompt: str,

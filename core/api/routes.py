@@ -20,7 +20,8 @@ async def health() -> dict:
 @router.post("/chat")
 async def chat(request: RuntimeRequest) -> dict:
     """Accept a runtime chat request and return the runtime response."""
-    response = handle_request(request)
+    progress_store.clear()
+    response = await handle_request(request)
     return response.model_dump()
 
 """Define API routes for retrieving runtime progress events."""
@@ -36,4 +37,3 @@ async def latest_progress() -> dict:
     """Return the latest runtime progress event."""
 
     return {"latest": progress_store.latest()}
-

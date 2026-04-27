@@ -13,7 +13,7 @@ class ModelResourcePreparer:
         self.workflow = PrepareRuntimeResourceWorkflow()
         self.model_registry = ModelRuntimeRegistry()
 
-    def prepare(
+    async def prepare(
         self,
         provider: str,
         model: str,
@@ -31,7 +31,7 @@ class ModelResourcePreparer:
             }
 
         if provider == "ollama":
-            return self._prepare_ollama(model=model, force=force)
+            return await self._prepare_ollama(model=model, force=force)
 
         return {
             "provider_ready": True,
@@ -40,7 +40,7 @@ class ModelResourcePreparer:
             "model_result": {},
         }
 
-    def _prepare_ollama(self, model: str, force: bool = False) -> dict:
+    async def _prepare_ollama(self, model: str, force: bool = False) -> dict:
         api_base = SETTINGS["ollama"]["api_base"].rstrip("/")
 
         provider_resource = RuntimeResource(
@@ -69,8 +69,8 @@ class ModelResourcePreparer:
             metadata={"role": "local_llm_model"},
         )
 
-        provider_result = self.workflow.run(provider_resource, force=force)
-        model_result = self.workflow.run(model_resource, force=force)
+        provider_result = await self.workflow.run(provider_resource, force=force)
+        model_result = await self.workflow.run(model_resource, force=force)
 
         payload = {
             "ready": provider_result.ready and model_result.ready,
@@ -79,6 +79,6 @@ class ModelResourcePreparer:
             "provider_result": provider_result.model_dump(),
             "model_result": model_result.model_dump(),
         }
-        self.model_registry.register_ready("ollama", model, payload)
+        await self.model_registry.register_ready("ollama", model, payload)
 
         return payload

@@ -9,7 +9,7 @@ logger = get_logger(__name__)
 SCHEMA_DIR = Path(__file__).resolve().parents[2] / "schemas"
 
 
-def validate_against(schema_name: str, payload: dict) -> None:
+async def validate_against(schema_name: str, payload: dict) -> None:
     try:
         schema_path = SCHEMA_DIR / schema_name
         schema = json.loads(schema_path.read_text(encoding="utf-8"))

@@ -14,18 +14,18 @@ class ModelWorkflowPlanner:
     def __init__(self) -> None:
         self.router = ModelRouter()
 
-    def build(self, intent: IntentModel) -> WorkflowModel:
+    async def build(self, intent: IntentModel) -> WorkflowModel:
         """Generate, normalize, validate, and return workflow."""
 
         system_prompt, user_prompt = build_workflow_prompt(intent)
 
-        raw = self.router.complete_json(
+        raw = await self.router.complete_json(
             task_type="workflow",
             system_prompt=system_prompt,
             user_prompt=user_prompt,
         )
 
         normalized = normalize_workflow_payload(raw, intent)
-        validate_against("workflow.schema.json", normalized)
+        await validate_against("workflow.schema.json", normalized)
 
         return WorkflowModel(**normalized)

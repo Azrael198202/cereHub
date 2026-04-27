@@ -8,7 +8,7 @@ from core.contracts.trace import TraceModel
 class TraceEvaluator:
     """Evaluates trace records and workflow outcomes."""
 
-    def evaluate_step(self, trace: TraceModel) -> dict[str, Any]:
+    async def evaluate_step(self, trace: TraceModel) -> dict[str, Any]:
         """Evaluate one trace record."""
 
         validation = trace.validation_result or {}
@@ -42,10 +42,10 @@ class TraceEvaluator:
             "messages": messages,
         }
 
-    def evaluate_workflow(self, traces: list[TraceModel]) -> dict[str, Any]:
+    async def evaluate_workflow(self, traces: list[TraceModel]) -> dict[str, Any]:
         """Evaluate all traces for one workflow."""
 
-        step_results = [self.evaluate_step(trace) for trace in traces]
+        step_results = [await self.evaluate_step(trace) for trace in traces]
         passed = all(item["passed"] for item in step_results)
 
         return {
@@ -55,7 +55,7 @@ class TraceEvaluator:
             "step_results": step_results,
         }
 
-    def evaluate_intent_outcome(
+    async def evaluate_intent_outcome(
         self,
         traces: list[TraceModel],
         required_outcomes: list[str],
@@ -65,7 +65,7 @@ class TraceEvaluator:
         observed: set[str] = set()
 
         for trace in traces:
-            self._collect_observed_values(trace.task_output, observed)
+            await self._collect_observed_values(trace.task_output, observed)
 
         missing = [outcome for outcome in required_outcomes if outcome not in observed]
 
@@ -76,16 +76,16 @@ class TraceEvaluator:
             "missing_outcomes": missing,
         }
 
-    def _collect_observed_values(self, value: Any, observed: set[str]) -> None:
+    async def _collect_observed_values(self, value: Any, observed: set[str]) -> None:
         if isinstance(value, dict):
             for key, item in value.items():
                 observed.add(str(key))
-                self._collect_observed_values(item, observed)
+                await self._collect_observed_values(item, observed)
             return
 
         if isinstance(value, list):
             for item in value:
-                self._collect_observed_values(item, observed)
+                await self._collect_observed_values(item, observed)
             return
 
         if value is not None:

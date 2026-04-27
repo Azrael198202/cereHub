@@ -18,20 +18,20 @@ class TraceStore:
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
 
-    def append(self, trace: TraceModel) -> None:
+    async def append(self, trace: TraceModel) -> None:
         """Append one trace record."""
 
         with self.path.open("a", encoding="utf-8") as f:
             f.write(json.dumps(trace.model_dump(), ensure_ascii=False) + "\n")
 
-    def append_many(self, traces: Iterable[TraceModel]) -> None:
+    async def append_many(self, traces: Iterable[TraceModel]) -> None:
         """Append multiple trace records."""
 
         with self.path.open("a", encoding="utf-8") as f:
             for trace in traces:
                 f.write(json.dumps(trace.model_dump(), ensure_ascii=False) + "\n")
 
-    def list_all(self) -> list[dict]:
+    async def list_all(self) -> list[dict]:
         """Load all trace records."""
 
         if not self.path.exists():
@@ -43,17 +43,17 @@ class TraceStore:
                 records.append(json.loads(line))
         return records
 
-    def find_by_workflow(self, workflow_id: str) -> list[dict]:
+    async def find_by_workflow(self, workflow_id: str) -> list[dict]:
         """Find traces by workflow id."""
 
-        return [record for record in self.list_all() if record.get("workflow_id") == workflow_id]
+        return [record for record in await self.list_all() if record.get("workflow_id") == workflow_id]
 
-    def find_by_intent(self, intent_id: str) -> list[dict]:
+    async def find_by_intent(self, intent_id: str) -> list[dict]:
         """Find traces by intent id."""
 
-        return [record for record in self.list_all() if record.get("intent_id") == intent_id]
+        return [record for record in await self.list_all() if record.get("intent_id") == intent_id]
 
-    def clear(self) -> None:
+    async def clear(self) -> None:
         """Delete all stored traces."""
 
         if self.path.exists():

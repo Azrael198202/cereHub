@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import asyncio
 import json
 from pathlib import Path
 
@@ -30,31 +31,31 @@ class PrepareRuntimeResourceWorkflow:
         self.registry = RuntimeResourceRegistry()
         self.trace_store = TraceStore()
 
-    def run(self, resource: RuntimeResource, *, force: bool = False) -> ResourcePreparationResult:
+    async def run(self, resource: RuntimeResource, *, force: bool = False) -> ResourcePreparationResult:
         """Run the resource preparation workflow."""
 
         traces = []
 
         detected = self.detector.detect(resource)
-        traces.append(self._trace(1, "task_detect_resource", "detect_resource", resource.model_dump(), detected, "success"))
+        traces.append(await self._trace(1, "task_detect_resource", "detect_resource", resource.model_dump(), detected, "success"))
 
         plan = self.planner.build_plan(resource, detected, force=force)
-        traces.append(self._trace(2, "task_generate_preparation_plan", "generate_preparation_plan", detected, plan.model_dump(), "success"))
+        traces.append(await self._trace(2, "task_generate_preparation_plan", "generate_preparation_plan", detected, plan.model_dump(), "success"))
 
         permission_output = {
             "allowed_by_policy": True,
             "note": "Risky commands are still blocked unless NESTHUB_ALLOW_INSTALL=true.",
             "force": force,
         }
-        traces.append(self._trace(3, "task_permission_gate", "permission_gate", plan.model_dump(), permission_output, "success"))
+        traces.append(await self._trace(3, "task_permission_gate", "permission_gate", plan.model_dump(), permission_output, "success"))
 
         command_results = self.executor.execute(plan)
         command_output = {"command_results": [r.model_dump() for r in command_results]}
-        traces.append(self._trace(4, "task_execute_preparation_plan", "execute_preparation_plan", plan.model_dump(), command_output, "success"))
+        traces.append(await self._trace(4, "task_execute_preparation_plan", "execute_preparation_plan", plan.model_dump(), command_output, "success"))
 
         validation = self.validator.validate(resource)
         traces.append(
-            self._trace(
+            await self._trace(
                 5,
                 "task_verify_resource",
                 "verify_resource",
@@ -73,9 +74,9 @@ class PrepareRuntimeResourceWorkflow:
                 "validation": validation,
             },
         )
-        traces.append(self._trace(6, "task_register_resource", "register_resource", validation, {"capability_registered": True, "capability": capability}, "success"))
+        traces.append(await self._trace(6, "task_register_resource", "register_resource", validation, {"capability_registered": True, "capability": capability}, "success"))
 
-        self.trace_store.append_many(traces)
+        await self.trace_store.append_many(traces)
 
         return ResourcePreparationResult(
             resource_id=resource.resource_id,
@@ -89,7 +90,7 @@ class PrepareRuntimeResourceWorkflow:
             traces=[t.model_dump() for t in traces],
         )
 
-    def _trace(
+    async def _trace(
         self,
         step_index: int,
         task_id: str,
@@ -99,7 +100,7 @@ class PrepareRuntimeResourceWorkflow:
         status: str,
         error_reason: str | None = None,
     ):
-        return build_trace(
+        return await build_trace(
             workflow_id=WORKFLOW_ID,
             task_id=task_id,
             step_index=step_index,
@@ -131,7 +132,7 @@ def main() -> None:
     args = parser.parse_args()
 
     resource = load_resource(args.resource)
-    result = PrepareRuntimeResourceWorkflow().run(resource, force=args.force)
+    result = asyncio.run(PrepareRuntimeResourceWorkflow().run(resource, force=args.force))
     print(json.dumps(result.model_dump(), indent=2, ensure_ascii=False))
 
 

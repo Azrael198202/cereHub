@@ -18,7 +18,7 @@ class HuggingFaceProvider(BaseModelProvider):
         self.local_path = local_path
         self._pipelines: dict[str, Any] = {}
 
-    def complete_json(
+    async def complete_json(
         self,
         model: str,
         system_prompt: str,
@@ -42,7 +42,7 @@ class HuggingFaceProvider(BaseModelProvider):
 
         return self._parse_json(text)
 
-    def _get_pipeline(self, model: str):
+    async def _get_pipeline(self, model: str):
         key = self.local_path or model
         if key in self._pipelines:
             return self._pipelines[key]
