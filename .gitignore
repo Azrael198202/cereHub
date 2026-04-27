@@ -27,4 +27,4 @@ build/
 core/runtime/logs/*.log
 
 
-runtime/
+/runtime/
