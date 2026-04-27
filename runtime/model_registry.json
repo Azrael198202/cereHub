@@ -4,7 +4,7 @@
     "model": "qwen3:4b",
     "status": "ready",
     "ready": true,
-    "checked_at": "2026-04-27T12:27:29.277677+00:00",
+    "checked_at": "2026-04-27T12:37:17.633127+00:00",
     "payload": {
       "ready": true,
       "provider_ready": true,
@@ -787,8 +787,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:29.189569+00:00",
-            "finished_at": "2026-04-27T12:27:29.189593+00:00"
+            "started_at": "2026-04-27T12:37:17.537920+00:00",
+            "finished_at": "2026-04-27T12:37:17.537944+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_2",
@@ -988,8 +988,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:29.189644+00:00",
-            "finished_at": "2026-04-27T12:27:29.189648+00:00"
+            "started_at": "2026-04-27T12:37:17.537995+00:00",
+            "finished_at": "2026-04-27T12:37:17.537998+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_3",
@@ -1024,8 +1024,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:29.189666+00:00",
-            "finished_at": "2026-04-27T12:27:29.189668+00:00"
+            "started_at": "2026-04-27T12:37:17.538020+00:00",
+            "finished_at": "2026-04-27T12:37:17.538023+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_4",
@@ -1058,8 +1058,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:29.189758+00:00",
-            "finished_at": "2026-04-27T12:27:29.189762+00:00"
+            "started_at": "2026-04-27T12:37:17.538145+00:00",
+            "finished_at": "2026-04-27T12:37:17.538148+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_5",
@@ -1280,8 +1280,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:29.207640+00:00",
-            "finished_at": "2026-04-27T12:27:29.207662+00:00"
+            "started_at": "2026-04-27T12:37:17.558114+00:00",
+            "finished_at": "2026-04-27T12:37:17.558137+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_6",
@@ -1686,8 +1686,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:29.216489+00:00",
-            "finished_at": "2026-04-27T12:27:29.216496+00:00"
+            "started_at": "2026-04-27T12:37:17.567766+00:00",
+            "finished_at": "2026-04-27T12:37:17.567775+00:00"
           }
         ]
       },
@@ -1705,7 +1705,7 @@
           "command_available": true,
           "command_result": {
             "return_code": 0,
-            "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+            "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
             "stderr": ""
           },
           "details": {
@@ -1891,7 +1891,7 @@
             "command_available": true,
             "command_result": {
               "return_code": 0,
-              "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+              "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
               "stderr": ""
             },
             "details": {
@@ -2095,7 +2095,7 @@
               "command_available": true,
               "command_result": {
                 "return_code": 0,
-                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                 "stderr": ""
               },
               "details": {
@@ -2303,7 +2303,7 @@
               "command_available": true,
               "command_result": {
                 "return_code": 0,
-                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                 "stderr": ""
               },
               "details": {
@@ -2473,8 +2473,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:29.243877+00:00",
-            "finished_at": "2026-04-27T12:27:29.243897+00:00"
+            "started_at": "2026-04-27T12:37:17.594336+00:00",
+            "finished_at": "2026-04-27T12:37:17.594356+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_2",
@@ -2496,7 +2496,7 @@
               "command_available": true,
               "command_result": {
                 "return_code": 0,
-                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                 "stderr": ""
               },
               "details": {
@@ -2674,8 +2674,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:29.243940+00:00",
-            "finished_at": "2026-04-27T12:27:29.243943+00:00"
+            "started_at": "2026-04-27T12:37:17.594403+00:00",
+            "finished_at": "2026-04-27T12:37:17.594407+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_3",
@@ -2710,8 +2710,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:29.243960+00:00",
-            "finished_at": "2026-04-27T12:27:29.243963+00:00"
+            "started_at": "2026-04-27T12:37:17.594453+00:00",
+            "finished_at": "2026-04-27T12:37:17.594457+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_4",
@@ -2744,8 +2744,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:29.244062+00:00",
-            "finished_at": "2026-04-27T12:27:29.244065+00:00"
+            "started_at": "2026-04-27T12:37:17.594578+00:00",
+            "finished_at": "2026-04-27T12:37:17.594580+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_5",
@@ -2797,7 +2797,7 @@
                 "command_available": true,
                 "command_result": {
                   "return_code": 0,
-                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                   "stderr": ""
                 },
                 "details": {
@@ -2968,8 +2968,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:29.264651+00:00",
-            "finished_at": "2026-04-27T12:27:29.264671+00:00"
+            "started_at": "2026-04-27T12:37:17.615586+00:00",
+            "finished_at": "2026-04-27T12:37:17.615613+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_6",
@@ -2997,7 +2997,7 @@
                 "command_available": true,
                 "command_result": {
                   "return_code": 0,
-                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                   "stderr": ""
                 },
                 "details": {
@@ -3203,7 +3203,7 @@
                     "command_available": true,
                     "command_result": {
                       "return_code": 0,
-                      "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                      "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                       "stderr": ""
                     },
                     "details": {
@@ -3376,8 +3376,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:29.273539+00:00",
-            "finished_at": "2026-04-27T12:27:29.273545+00:00"
+            "started_at": "2026-04-27T12:37:17.625271+00:00",
+            "finished_at": "2026-04-27T12:37:17.625281+00:00"
           }
         ]
       }
@@ -6659,7 +6659,7 @@
     "model": "qwen3:8b",
     "status": "ready",
     "ready": true,
-    "checked_at": "2026-04-27T12:29:11.394575+00:00",
+    "checked_at": "2026-04-27T12:41:17.212717+00:00",
     "payload": {
       "ready": true,
       "provider_ready": true,
@@ -7442,8 +7442,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.297769+00:00",
-            "finished_at": "2026-04-27T12:29:11.297794+00:00"
+            "started_at": "2026-04-27T12:41:17.120545+00:00",
+            "finished_at": "2026-04-27T12:41:17.120567+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_2",
@@ -7643,8 +7643,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.297851+00:00",
-            "finished_at": "2026-04-27T12:29:11.297855+00:00"
+            "started_at": "2026-04-27T12:41:17.120622+00:00",
+            "finished_at": "2026-04-27T12:41:17.120625+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_3",
@@ -7679,8 +7679,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.297874+00:00",
-            "finished_at": "2026-04-27T12:29:11.297878+00:00"
+            "started_at": "2026-04-27T12:41:17.120644+00:00",
+            "finished_at": "2026-04-27T12:41:17.120647+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_4",
@@ -7713,8 +7713,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.297987+00:00",
-            "finished_at": "2026-04-27T12:29:11.297989+00:00"
+            "started_at": "2026-04-27T12:41:17.120763+00:00",
+            "finished_at": "2026-04-27T12:41:17.120766+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_5",
@@ -7935,8 +7935,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.318119+00:00",
-            "finished_at": "2026-04-27T12:29:11.318147+00:00"
+            "started_at": "2026-04-27T12:41:17.139611+00:00",
+            "finished_at": "2026-04-27T12:41:17.139633+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_6",
@@ -8341,8 +8341,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.329620+00:00",
-            "finished_at": "2026-04-27T12:29:11.329628+00:00"
+            "started_at": "2026-04-27T12:41:17.148658+00:00",
+            "finished_at": "2026-04-27T12:41:17.148667+00:00"
           }
         ]
       },
@@ -8360,7 +8360,7 @@
           "command_available": true,
           "command_result": {
             "return_code": 0,
-            "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+            "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
             "stderr": ""
           },
           "details": {
@@ -8546,7 +8546,7 @@
             "command_available": true,
             "command_result": {
               "return_code": 0,
-              "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+              "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
               "stderr": ""
             },
             "details": {
@@ -8750,7 +8750,7 @@
               "command_available": true,
               "command_result": {
                 "return_code": 0,
-                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                 "stderr": ""
               },
               "details": {
@@ -8958,7 +8958,7 @@
               "command_available": true,
               "command_result": {
                 "return_code": 0,
-                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                 "stderr": ""
               },
               "details": {
@@ -9128,8 +9128,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.355882+00:00",
-            "finished_at": "2026-04-27T12:29:11.355909+00:00"
+            "started_at": "2026-04-27T12:41:17.175593+00:00",
+            "finished_at": "2026-04-27T12:41:17.175617+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_2",
@@ -9151,7 +9151,7 @@
               "command_available": true,
               "command_result": {
                 "return_code": 0,
-                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                 "stderr": ""
               },
               "details": {
@@ -9329,8 +9329,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.355963+00:00",
-            "finished_at": "2026-04-27T12:29:11.355966+00:00"
+            "started_at": "2026-04-27T12:41:17.175680+00:00",
+            "finished_at": "2026-04-27T12:41:17.175684+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_3",
@@ -9365,8 +9365,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.355988+00:00",
-            "finished_at": "2026-04-27T12:29:11.355990+00:00"
+            "started_at": "2026-04-27T12:41:17.175705+00:00",
+            "finished_at": "2026-04-27T12:41:17.175708+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_4",
@@ -9399,8 +9399,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.356108+00:00",
-            "finished_at": "2026-04-27T12:29:11.356111+00:00"
+            "started_at": "2026-04-27T12:41:17.175822+00:00",
+            "finished_at": "2026-04-27T12:41:17.175824+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_5",
@@ -9452,7 +9452,7 @@
                 "command_available": true,
                 "command_result": {
                   "return_code": 0,
-                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                   "stderr": ""
                 },
                 "details": {
@@ -9623,8 +9623,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.378488+00:00",
-            "finished_at": "2026-04-27T12:29:11.378516+00:00"
+            "started_at": "2026-04-27T12:41:17.197079+00:00",
+            "finished_at": "2026-04-27T12:41:17.197119+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_6",
@@ -9652,7 +9652,7 @@
                 "command_available": true,
                 "command_result": {
                   "return_code": 0,
-                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                   "stderr": ""
                 },
                 "details": {
@@ -9858,7 +9858,7 @@
                     "command_available": true,
                     "command_result": {
                       "return_code": 0,
-                      "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                      "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                       "stderr": ""
                     },
                     "details": {
@@ -10031,8 +10031,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.390334+00:00",
-            "finished_at": "2026-04-27T12:29:11.390344+00:00"
+            "started_at": "2026-04-27T12:41:17.206570+00:00",
+            "finished_at": "2026-04-27T12:41:17.206578+00:00"
           }
         ]
       }
@@ -13427,7 +13427,7 @@
     "model": "local-intent",
     "status": "ready",
     "ready": true,
-    "checked_at": "2026-04-27T12:27:29.476031+00:00",
+    "checked_at": "2026-04-27T12:37:17.896849+00:00",
     "payload": {
       "ready": true,
       "provider_ready": true,
@@ -13720,8 +13720,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:28.983593+00:00",
-            "finished_at": "2026-04-27T12:27:28.983606+00:00"
+            "started_at": "2026-04-27T12:37:17.375620+00:00",
+            "finished_at": "2026-04-27T12:37:17.375633+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_2",
@@ -13801,8 +13801,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:28.983678+00:00",
-            "finished_at": "2026-04-27T12:27:28.983682+00:00"
+            "started_at": "2026-04-27T12:37:17.375690+00:00",
+            "finished_at": "2026-04-27T12:37:17.375694+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_3",
@@ -13837,8 +13837,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:28.983701+00:00",
-            "finished_at": "2026-04-27T12:27:28.983704+00:00"
+            "started_at": "2026-04-27T12:37:17.375711+00:00",
+            "finished_at": "2026-04-27T12:37:17.375714+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_4",
@@ -13871,8 +13871,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:28.983899+00:00",
-            "finished_at": "2026-04-27T12:27:28.983904+00:00"
+            "started_at": "2026-04-27T12:37:17.376826+00:00",
+            "finished_at": "2026-04-27T12:37:17.376828+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_5",
@@ -13968,8 +13968,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:28.985481+00:00",
-            "finished_at": "2026-04-27T12:27:28.985486+00:00"
+            "started_at": "2026-04-27T12:37:17.378697+00:00",
+            "finished_at": "2026-04-27T12:37:17.378702+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_6",
@@ -14129,8 +14129,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:27:28.997623+00:00",
-            "finished_at": "2026-04-27T12:27:28.997632+00:00"
+            "started_at": "2026-04-27T12:37:17.390357+00:00",
+            "finished_at": "2026-04-27T12:37:17.390379+00:00"
           }
         ]
       },
@@ -14916,8 +14916,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:27:29.189569+00:00",
-              "finished_at": "2026-04-27T12:27:29.189593+00:00"
+              "started_at": "2026-04-27T12:37:17.537920+00:00",
+              "finished_at": "2026-04-27T12:37:17.537944+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_2",
@@ -15117,8 +15117,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:27:29.189644+00:00",
-              "finished_at": "2026-04-27T12:27:29.189648+00:00"
+              "started_at": "2026-04-27T12:37:17.537995+00:00",
+              "finished_at": "2026-04-27T12:37:17.537998+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_3",
@@ -15153,8 +15153,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:27:29.189666+00:00",
-              "finished_at": "2026-04-27T12:27:29.189668+00:00"
+              "started_at": "2026-04-27T12:37:17.538020+00:00",
+              "finished_at": "2026-04-27T12:37:17.538023+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_4",
@@ -15187,8 +15187,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:27:29.189758+00:00",
-              "finished_at": "2026-04-27T12:27:29.189762+00:00"
+              "started_at": "2026-04-27T12:37:17.538145+00:00",
+              "finished_at": "2026-04-27T12:37:17.538148+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_5",
@@ -15409,8 +15409,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:27:29.207640+00:00",
-              "finished_at": "2026-04-27T12:27:29.207662+00:00"
+              "started_at": "2026-04-27T12:37:17.558114+00:00",
+              "finished_at": "2026-04-27T12:37:17.558137+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_6",
@@ -15815,8 +15815,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:27:29.216489+00:00",
-              "finished_at": "2026-04-27T12:27:29.216496+00:00"
+              "started_at": "2026-04-27T12:37:17.567766+00:00",
+              "finished_at": "2026-04-27T12:37:17.567775+00:00"
             }
           ]
         },
@@ -15834,7 +15834,7 @@
             "command_available": true,
             "command_result": {
               "return_code": 0,
-              "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+              "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
               "stderr": ""
             },
             "details": {
@@ -16020,7 +16020,7 @@
               "command_available": true,
               "command_result": {
                 "return_code": 0,
-                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                 "stderr": ""
               },
               "details": {
@@ -16224,7 +16224,7 @@
                 "command_available": true,
                 "command_result": {
                   "return_code": 0,
-                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                   "stderr": ""
                 },
                 "details": {
@@ -16432,7 +16432,7 @@
                 "command_available": true,
                 "command_result": {
                   "return_code": 0,
-                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                   "stderr": ""
                 },
                 "details": {
@@ -16602,8 +16602,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:27:29.243877+00:00",
-              "finished_at": "2026-04-27T12:27:29.243897+00:00"
+              "started_at": "2026-04-27T12:37:17.594336+00:00",
+              "finished_at": "2026-04-27T12:37:17.594356+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_2",
@@ -16625,7 +16625,7 @@
                 "command_available": true,
                 "command_result": {
                   "return_code": 0,
-                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                   "stderr": ""
                 },
                 "details": {
@@ -16803,8 +16803,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:27:29.243940+00:00",
-              "finished_at": "2026-04-27T12:27:29.243943+00:00"
+              "started_at": "2026-04-27T12:37:17.594403+00:00",
+              "finished_at": "2026-04-27T12:37:17.594407+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_3",
@@ -16839,8 +16839,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:27:29.243960+00:00",
-              "finished_at": "2026-04-27T12:27:29.243963+00:00"
+              "started_at": "2026-04-27T12:37:17.594453+00:00",
+              "finished_at": "2026-04-27T12:37:17.594457+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_4",
@@ -16873,8 +16873,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:27:29.244062+00:00",
-              "finished_at": "2026-04-27T12:27:29.244065+00:00"
+              "started_at": "2026-04-27T12:37:17.594578+00:00",
+              "finished_at": "2026-04-27T12:37:17.594580+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_5",
@@ -16926,7 +16926,7 @@
                   "command_available": true,
                   "command_result": {
                     "return_code": 0,
-                    "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                    "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                     "stderr": ""
                   },
                   "details": {
@@ -17097,8 +17097,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:27:29.264651+00:00",
-              "finished_at": "2026-04-27T12:27:29.264671+00:00"
+              "started_at": "2026-04-27T12:37:17.615586+00:00",
+              "finished_at": "2026-04-27T12:37:17.615613+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_6",
@@ -17126,7 +17126,7 @@
                   "command_available": true,
                   "command_result": {
                     "return_code": 0,
-                    "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                    "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                     "stderr": ""
                   },
                   "details": {
@@ -17332,7 +17332,7 @@
                       "command_available": true,
                       "command_result": {
                         "return_code": 0,
-                        "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    18 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                        "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    28 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                         "stderr": ""
                       },
                       "details": {
@@ -17505,8 +17505,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:27:29.273539+00:00",
-              "finished_at": "2026-04-27T12:27:29.273545+00:00"
+              "started_at": "2026-04-27T12:37:17.625271+00:00",
+              "finished_at": "2026-04-27T12:37:17.625281+00:00"
             }
           ]
         }
@@ -17520,7 +17520,7 @@
     "model": "local-workflow",
     "status": "ready",
     "ready": true,
-    "checked_at": "2026-04-27T12:29:11.654352+00:00",
+    "checked_at": "2026-04-27T12:41:17.457428+00:00",
     "payload": {
       "ready": true,
       "provider_ready": true,
@@ -17813,8 +17813,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.092590+00:00",
-            "finished_at": "2026-04-27T12:29:11.092608+00:00"
+            "started_at": "2026-04-27T12:41:16.931581+00:00",
+            "finished_at": "2026-04-27T12:41:16.931604+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_2",
@@ -17894,8 +17894,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.092687+00:00",
-            "finished_at": "2026-04-27T12:29:11.092692+00:00"
+            "started_at": "2026-04-27T12:41:16.931767+00:00",
+            "finished_at": "2026-04-27T12:41:16.931774+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_3",
@@ -17930,8 +17930,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.092712+00:00",
-            "finished_at": "2026-04-27T12:29:11.092716+00:00"
+            "started_at": "2026-04-27T12:41:16.931801+00:00",
+            "finished_at": "2026-04-27T12:41:16.931806+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_4",
@@ -17964,8 +17964,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.092882+00:00",
-            "finished_at": "2026-04-27T12:29:11.092886+00:00"
+            "started_at": "2026-04-27T12:41:16.932094+00:00",
+            "finished_at": "2026-04-27T12:41:16.932098+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_5",
@@ -18061,8 +18061,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.094489+00:00",
-            "finished_at": "2026-04-27T12:29:11.094497+00:00"
+            "started_at": "2026-04-27T12:41:16.934095+00:00",
+            "finished_at": "2026-04-27T12:41:16.934105+00:00"
           },
           {
             "trace_id": "trace_wf_prepare_runtime_resource_6",
@@ -18222,8 +18222,8 @@
             "fallback_used": false,
             "status": "success",
             "error_reason": null,
-            "started_at": "2026-04-27T12:29:11.109239+00:00",
-            "finished_at": "2026-04-27T12:29:11.109246+00:00"
+            "started_at": "2026-04-27T12:41:16.949255+00:00",
+            "finished_at": "2026-04-27T12:41:16.949265+00:00"
           }
         ]
       },
@@ -19009,8 +19009,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:29:11.297769+00:00",
-              "finished_at": "2026-04-27T12:29:11.297794+00:00"
+              "started_at": "2026-04-27T12:41:17.120545+00:00",
+              "finished_at": "2026-04-27T12:41:17.120567+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_2",
@@ -19210,8 +19210,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:29:11.297851+00:00",
-              "finished_at": "2026-04-27T12:29:11.297855+00:00"
+              "started_at": "2026-04-27T12:41:17.120622+00:00",
+              "finished_at": "2026-04-27T12:41:17.120625+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_3",
@@ -19246,8 +19246,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:29:11.297874+00:00",
-              "finished_at": "2026-04-27T12:29:11.297878+00:00"
+              "started_at": "2026-04-27T12:41:17.120644+00:00",
+              "finished_at": "2026-04-27T12:41:17.120647+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_4",
@@ -19280,8 +19280,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:29:11.297987+00:00",
-              "finished_at": "2026-04-27T12:29:11.297989+00:00"
+              "started_at": "2026-04-27T12:41:17.120763+00:00",
+              "finished_at": "2026-04-27T12:41:17.120766+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_5",
@@ -19502,8 +19502,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:29:11.318119+00:00",
-              "finished_at": "2026-04-27T12:29:11.318147+00:00"
+              "started_at": "2026-04-27T12:41:17.139611+00:00",
+              "finished_at": "2026-04-27T12:41:17.139633+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_6",
@@ -19908,8 +19908,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:29:11.329620+00:00",
-              "finished_at": "2026-04-27T12:29:11.329628+00:00"
+              "started_at": "2026-04-27T12:41:17.148658+00:00",
+              "finished_at": "2026-04-27T12:41:17.148667+00:00"
             }
           ]
         },
@@ -19927,7 +19927,7 @@
             "command_available": true,
             "command_result": {
               "return_code": 0,
-              "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+              "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
               "stderr": ""
             },
             "details": {
@@ -20113,7 +20113,7 @@
               "command_available": true,
               "command_result": {
                 "return_code": 0,
-                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                 "stderr": ""
               },
               "details": {
@@ -20317,7 +20317,7 @@
                 "command_available": true,
                 "command_result": {
                   "return_code": 0,
-                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                   "stderr": ""
                 },
                 "details": {
@@ -20525,7 +20525,7 @@
                 "command_available": true,
                 "command_result": {
                   "return_code": 0,
-                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                   "stderr": ""
                 },
                 "details": {
@@ -20695,8 +20695,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:29:11.355882+00:00",
-              "finished_at": "2026-04-27T12:29:11.355909+00:00"
+              "started_at": "2026-04-27T12:41:17.175593+00:00",
+              "finished_at": "2026-04-27T12:41:17.175617+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_2",
@@ -20718,7 +20718,7 @@
                 "command_available": true,
                 "command_result": {
                   "return_code": 0,
-                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                  "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                   "stderr": ""
                 },
                 "details": {
@@ -20896,8 +20896,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:29:11.355963+00:00",
-              "finished_at": "2026-04-27T12:29:11.355966+00:00"
+              "started_at": "2026-04-27T12:41:17.175680+00:00",
+              "finished_at": "2026-04-27T12:41:17.175684+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_3",
@@ -20932,8 +20932,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:29:11.355988+00:00",
-              "finished_at": "2026-04-27T12:29:11.355990+00:00"
+              "started_at": "2026-04-27T12:41:17.175705+00:00",
+              "finished_at": "2026-04-27T12:41:17.175708+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_4",
@@ -20966,8 +20966,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:29:11.356108+00:00",
-              "finished_at": "2026-04-27T12:29:11.356111+00:00"
+              "started_at": "2026-04-27T12:41:17.175822+00:00",
+              "finished_at": "2026-04-27T12:41:17.175824+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_5",
@@ -21019,7 +21019,7 @@
                   "command_available": true,
                   "command_result": {
                     "return_code": 0,
-                    "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                    "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                     "stderr": ""
                   },
                   "details": {
@@ -21190,8 +21190,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:29:11.378488+00:00",
-              "finished_at": "2026-04-27T12:29:11.378516+00:00"
+              "started_at": "2026-04-27T12:41:17.197079+00:00",
+              "finished_at": "2026-04-27T12:41:17.197119+00:00"
             },
             {
               "trace_id": "trace_wf_prepare_runtime_resource_6",
@@ -21219,7 +21219,7 @@
                   "command_available": true,
                   "command_result": {
                     "return_code": 0,
-                    "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                    "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                     "stderr": ""
                   },
                   "details": {
@@ -21425,7 +21425,7 @@
                       "command_available": true,
                       "command_result": {
                         "return_code": 0,
-                        "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    20 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    4 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    4 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
+                        "stdout": "NAME                     ID              SIZE      MODIFIED       \nqwen3:4b-instruct        0edcdef34593    2.5 GB    32 minutes ago    \ndeepseek-r1:7b           755ced02ce7b    4.7 GB    4 hours ago       \nqwen3:8b                 500a1f067a9f    5.2 GB    5 hours ago       \nqwen3:4b                 359d7dd4bcda    2.5 GB    5 hours ago       \nqwen2.5vl:7b             5ced39dfa4ba    6.0 GB    3 weeks ago       \nqwen2.5-coder:7b         dae161e27b0e    4.7 GB    3 weeks ago       \nqwen2.5:7b-instruct      845dbda0ea48    4.7 GB    3 weeks ago       \nqwen2.5:3b-instruct      357c53fb659c    1.9 GB    3 weeks ago       \nqwen2.5:1.5b-instruct    65ec06548149    986 MB    3 weeks ago       \n",
                         "stderr": ""
                       },
                       "details": {
@@ -21598,8 +21598,8 @@
               "fallback_used": false,
               "status": "success",
               "error_reason": null,
-              "started_at": "2026-04-27T12:29:11.390334+00:00",
-              "finished_at": "2026-04-27T12:29:11.390344+00:00"
+              "started_at": "2026-04-27T12:41:17.206570+00:00",
+              "finished_at": "2026-04-27T12:41:17.206578+00:00"
             }
           ]
         }

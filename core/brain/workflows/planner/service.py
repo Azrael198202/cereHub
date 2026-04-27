@@ -17,6 +17,7 @@ async def build_workflow(intent: IntentModel) -> WorkflowModel:
     except Exception as exc:
         print("workflow model planner failed, fallback to template planner:", exc)
 
+    ''' template planner is a deterministic fallback that ensures we can always generate a workflow, even if the model planner fails.'''
     workflow = await build_template_workflow(intent)
     await validate_against("workflow.schema.json", workflow.model_dump())
     return workflow
