@@ -1,22 +1,36 @@
 {
   "intent": {
     "strategy": "first_success",
+    "fallback_on": [
+      "timeout",
+      "schema_validation_failed",
+      "low_confidence",
+      "empty_output"
+    ],
     "candidates": [
       {
-        "name": "qwen3_4b",
-        "provider": "ollama",
-        "model": "qwen3:4b",
+        "name": "local_intent",
+        "provider": "litellm",
+        "model": "local-intent",
         "temperature": 0.1,
-        "min_confidence": 0.5,
+        "min_confidence": 0.7,
         "prepare_runtime": true
       },
       {
-        "name": "qwen3_4b_instruct",
-        "provider": "ollama",
-        "model": "qwen3:4b-instruct",
+        "name": "local_intent_instruct",
+        "provider": "litellm",
+        "model": "local-intent-instruct",
         "temperature": 0.1,
-        "min_confidence": 0.5,
+        "min_confidence": 0.7,
         "prepare_runtime": true
+      },
+      {
+        "name": "cloud_chat",
+        "provider": "litellm",
+        "model": "cloud-chat",
+        "temperature": 0.2,
+        "min_confidence": 0.8,
+        "prepare_runtime": false
       },
       {
         "name": "mock_intent",
@@ -30,22 +44,36 @@
   },
   "workflow": {
     "strategy": "first_success",
+    "fallback_on": [
+      "timeout",
+      "schema_validation_failed",
+      "low_confidence",
+      "empty_output"
+    ],
     "candidates": [
       {
-        "name": "qwen3_8b",
-        "provider": "ollama",
-        "model": "qwen3:8b",
+        "name": "local_workflow",
+        "provider": "litellm",
+        "model": "local-workflow",
         "temperature": 0.1,
-        "min_confidence": 0.5,
+        "min_confidence": 0.7,
         "prepare_runtime": true
       },
       {
-        "name": "deepseek_r1_7b",
-        "provider": "ollama",
-        "model": "deepseek-r1:7b",
+        "name": "local_reasoning",
+        "provider": "litellm",
+        "model": "local-reasoning",
         "temperature": 0.1,
-        "min_confidence": 0.5,
+        "min_confidence": 0.7,
         "prepare_runtime": true
+      },
+      {
+        "name": "cloud_reasoning",
+        "provider": "litellm",
+        "model": "cloud-reasoning",
+        "temperature": 0.2,
+        "min_confidence": 0.8,
+        "prepare_runtime": false
       }
     ]
   },
@@ -53,20 +81,33 @@
     "strategy": "first_success",
     "candidates": [
       {
-        "name": "openai",
-        "provider": "openai",
-        "model": "gpt-4o-mini",
+        "name": "cloud_chat",
+        "provider": "litellm",
+        "model": "cloud-chat",
         "temperature": 0.3,
-        "min_confidence": 0.5,
-        "prepare_runtime": true
+        "min_confidence": 0.6,
+        "prepare_runtime": false
       },
       {
-        "name": "deepseek_r1_7b",
-        "provider": "ollama",
-        "model": "deepseek-r1:7b",
+        "name": "local_reasoning",
+        "provider": "litellm",
+        "model": "local-reasoning",
         "temperature": 0.1,
-        "min_confidence": 0.5,
+        "min_confidence": 0.6,
         "prepare_runtime": true
+      }
+    ]
+  },
+  "code_generation": {
+    "strategy": "cloud_first",
+    "candidates": [
+      {
+        "name": "cloud_reasoning",
+        "provider": "litellm",
+        "model": "cloud-reasoning",
+        "temperature": 0.2,
+        "min_confidence": 0.8,
+        "prepare_runtime": false
       }
     ]
   }

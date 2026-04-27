@@ -1,15 +1,19 @@
 .
 ├── core
+│   ├── __init__.py
 │   ├── api
 │   │   ├── __init__.py
 │   │   └── routes.py
 │   ├── brain
+│   │   ├── __init__.py
+│   │   ├── agents
 │   │   ├── artifacts
 │   │   │   └── registry.py
 │   │   ├── chat
 │   │   │   └── README.md
+│   │   ├── execution
 │   │   ├── helpers.py
-│   │   ├── __init__.py
+│   │   ├── memory
 │   │   ├── orchestration
 │   │   │   └── service.py
 │   │   ├── planning
@@ -17,12 +21,10 @@
 │   │   │   └── intent_service.py
 │   │   ├── tools
 │   │   │   ├── builder
-│   │   │   │   └── README.md
 │   │   │   ├── registry
-│   │   │   │   └── README.md
 │   │   │   └── resolver
-│   │   │       └── service.py
 │   │   ├── trace
+│   │   │   ├── __init__.py
 │   │   │   ├── evaluator.py
 │   │   │   ├── recorder.py
 │   │   │   └── store.py
@@ -30,35 +32,25 @@
 │   │   │   └── schema_validator.py
 │   │   └── workflows
 │   │       ├── builder
-│   │       │   └── README.md
 │   │       ├── executor
-│   │       │   ├── readme.md
-│   │       │   └── service.py
 │   │       ├── planner
-│   │       │   ├── readme.md
-│   │       │   ├── service.py
-│   │       │   └── step_builder.py
 │   │       └── state
-│   │           └── README.md
-│   ├── brain_legacy
-│   │   ├── classifier.py
-│   │   ├── executor.py
-│   │   ├── orchestrator.py
-│   │   ├── planner.py
-│   │   └── tool_builder.py
 │   ├── capability
+│   │   ├── __init__.py
 │   │   ├── registry.py
 │   │   └── resolver.py
 │   ├── config
+│   │   ├── __init__.py
 │   │   ├── config_loader.py
 │   │   └── models.json
 │   ├── contracts
+│   │   ├── __init__.py
 │   │   ├── agent.py
 │   │   ├── artifact.py
 │   │   ├── blueprint.py
-│   │   ├── __init__.py
 │   │   ├── install_plan.py
 │   │   ├── intent.py
+│   │   ├── model_resource.py
 │   │   ├── models.py
 │   │   ├── request.py
 │   │   ├── response.py
@@ -68,21 +60,67 @@
 │   │   ├── trace.py
 │   │   └── workflow.py
 │   ├── environment
+│   │   ├── __init__.py
 │   │   ├── detectors
+│   │   │   ├── __init__.py
+│   │   │   └── resource_detector.py
 │   │   ├── executor
+│   │   │   ├── __init__.py
+│   │   │   └── resource_plan_executor.py
 │   │   ├── planner
+│   │   │   ├── __init__.py
+│   │   │   └── resource_plan_builder.py
 │   │   ├── registry
-│   │   └── validators
-│   ├── __init__.py
+│   │   │   ├── __init__.py
+│   │   │   └── resource_registry.py
+│   │   ├── validators
+│   │   │   ├── __init__.py
+│   │   │   └── resource_validator.py
+│   │   └── workflows
+│   │       ├── __init__.py
+│   │       ├── prepare_runtime_resource.py
+│   │       ├── prepare_runtime_resource.workflow.json
+│   │       ├── trace copy.py
+│   │       └── trace.py
 │   ├── main.py
 │   ├── models
+│   │   ├── __init__.py
+│   │   ├── downloader
+│   │   │   ├── __init__.py
+│   │   │   └── huggingface_downloader.py
+│   │   ├── provider_registry.py
 │   │   ├── providers
+│   │   │   ├── __init__.py
 │   │   │   ├── base.py
+│   │   │   ├── huggingface_provider.py
 │   │   │   ├── mock_provider.py
 │   │   │   └── ollama_provider.py
-│   │   └── router.py
+│   │   ├── Readme.md
+│   │   ├── registry
+│   │   │   ├── __init__.py
+│   │   │   ├── model_runtime_registry.py
+│   │   │   └── provider_registry.py
+│   │   ├── resource_preparer.py
+│   │   ├── router.py
+│   │   ├── runtime
+│   │   │   ├── __init__.py
+│   │   │   └── model_installer.py
+│   │   └── selector
+│   │       ├── __init__.py
+│   │       └── model_selector.py
+│   ├── registry
+│   ├── resources
+│   │   ├── ffmpeg.json
+│   │   ├── hf_qwen2_5_7b_instruct.json
+│   │   ├── ollama_qwen3_4b.json
+│   │   ├── ollama_runtime.json
+│   │   ├── playwright_chromium.json
+│   │   └── python_jsonschema.json
 │   ├── runtime
-│   │   └── command_runner.py
+│   │   ├── __init__.py
+│   │   ├── command_runner.py
+│   │   ├── logger.py
+│   │   └── progress.py
 │   ├── schemas
 │   │   ├── blueprint.schema.json
 │   │   ├── intent.schema.json
@@ -90,6 +128,8 @@
 │   │   ├── tool.schema.json
 │   │   ├── trace.schema.json
 │   │   └── workflow.schema.json
+│   ├── static
+│   │   └── favicon.ico
 │   └── validation
 │       └── schema_validator.py
 ├── docs
@@ -98,6 +138,13 @@
 │       └── work_flow.txt
 ├── README.md
 ├── requirements.txt
+├── runtime
+│   ├── logs
+│   │   ├── error.log
+│   │   └── info.log
+│   ├── model_registry.json
+│   ├── runtime_resources.json
+│   └── traces.jsonl
 ├── tree.txt
 └── ui
     ├── app
@@ -105,4 +152,4 @@
     └── box
         └── index.html
 
-39 directories, 67 files
+51 directories, 102 files

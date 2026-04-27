@@ -37,6 +37,10 @@ SETTINGS = {
     "groq": {
         "api_key": os.getenv("GROQ_API_KEY"),
     },
+    "litellm": {
+        "base_url": "http://localhost:4000/v1",
+        "api_key": "anything"
+    },
     "runtime": {
         "model_timeout": int(os.getenv("MODEL_TIMEOUT", "30")),
         "model_retry": int(os.getenv("MODEL_RETRY", "1")),

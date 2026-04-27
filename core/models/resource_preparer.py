@@ -1,6 +1,10 @@
 from __future__ import annotations
 
-from core.config.config_loader import SETTINGS
+from typing import Any
+
+import yaml
+
+from core.config.config_loader import BASE_DIR, SETTINGS
 from core.contracts.runtime_resource import RuntimeResource
 from core.environment.workflows.prepare_runtime_resource import PrepareRuntimeResourceWorkflow
 from core.models.registry.model_runtime_registry import ModelRuntimeRegistry
@@ -12,6 +16,7 @@ class ModelResourcePreparer:
     def __init__(self) -> None:
         self.workflow = PrepareRuntimeResourceWorkflow()
         self.model_registry = ModelRuntimeRegistry()
+        self._litellm_backing_cache: dict[str, tuple[str, str]] | None = None
 
     async def prepare(
         self,
@@ -32,6 +37,9 @@ class ModelResourcePreparer:
 
         if provider == "ollama":
             return await self._prepare_ollama(model=model, force=force)
+
+        if provider == "litellm":
+            return await self._prepare_litellm(model=model, force=force)
 
         return {
             "provider_ready": True,
@@ -82,3 +90,85 @@ class ModelResourcePreparer:
         await self.model_registry.register_ready("ollama", model, payload)
 
         return payload
+
+    async def _prepare_litellm(self, model: str, force: bool = False) -> dict:
+        api_base = SETTINGS["litellm"]["base_url"].rstrip("/")
+
+        proxy_resource = RuntimeResource(
+            resource_id="res_litellm_proxy",
+            resource_type="external_model",
+            name="litellm-proxy",
+            provider="litellm",
+            required=True,
+            install_strategy=[],
+            verification_command=None,
+            healthcheck_url=f"{api_base}/models",
+            dependencies=[],
+            metadata={"role": "model_gateway"},
+        )
+
+        proxy_result = await self.workflow.run(proxy_resource, force=force)
+
+        backing = self._resolve_litellm_backing_model(model)
+        if not backing:
+            return {
+                "ready": proxy_result.ready,
+                "provider_ready": proxy_result.ready,
+                "model_ready": True,
+                "provider_result": proxy_result.model_dump(),
+                "model_result": {},
+            }
+
+        backing_provider, backing_model = backing
+        if backing_provider != "ollama":
+            raise RuntimeError(f"Unsupported LiteLLM backing provider: {backing_provider}")
+
+        backing_result = await self._prepare_ollama(model=backing_model, force=force)
+        payload = {
+            "ready": proxy_result.ready and backing_result["model_ready"],
+            "provider_ready": proxy_result.ready,
+            "model_ready": backing_result["model_ready"],
+            "provider_result": proxy_result.model_dump(),
+            "model_result": backing_result,
+            "backing_provider": backing_provider,
+            "backing_model": backing_model,
+        }
+        if payload["ready"]:
+            await self.model_registry.register_ready("litellm", model, payload)
+
+        return payload
+
+    def _resolve_litellm_backing_model(self, alias: str) -> tuple[str, str] | None:
+        if self._litellm_backing_cache is None:
+            self._litellm_backing_cache = self._load_litellm_backing_models()
+
+        return self._litellm_backing_cache.get(alias)
+
+    def _load_litellm_backing_models(self) -> dict[str, tuple[str, str]]:
+        config_path = BASE_DIR / "core/config/litellm.config.yaml"
+        payload = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+        model_list = payload.get("model_list") or []
+
+        result: dict[str, tuple[str, str]] = {}
+        for item in model_list:
+            if not isinstance(item, dict):
+                continue
+
+            alias = item.get("model_name")
+            params = item.get("litellm_params") or {}
+            backing_model = self._parse_litellm_backing_model(params)
+            if alias and backing_model:
+                result[alias] = backing_model
+
+        return result
+
+    def _parse_litellm_backing_model(self, params: dict[str, Any]) -> tuple[str, str] | None:
+        model = params.get("model")
+        if not isinstance(model, str):
+            return None
+
+        for prefix in ("ollama_chat/", "ollama/"):
+            if model.startswith(prefix):
+                return ("ollama", model.removeprefix(prefix))
+
+        return None

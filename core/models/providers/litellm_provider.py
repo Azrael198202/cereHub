@@ -4,17 +4,27 @@ import json
 import re
 from typing import Any
 
-from litellm import APIConnectionError
-from litellm import acompletion
+from openai import APIConnectionError
+from openai import AsyncOpenAI
 
 from core.models.providers.base import BaseModelProvider
 
 
-class OllamaProvider(BaseModelProvider):
-    """LiteLLM-backed Ollama provider."""
+class LiteLLMProvider(BaseModelProvider):
+    """LiteLLM Proxy provider."""
 
-    def __init__(self, api_base: str = "http://localhost:11434") -> None:
-        self.api_base = api_base
+    def __init__(
+        self,
+        api_base: str | None = None,
+        base_url: str | None = None,
+        api_key: str = "anything",
+    ) -> None:
+        self.api_base = api_base or base_url or "http://localhost:4000/v1"
+        self.api_key = api_key
+        self.client = AsyncOpenAI(
+            api_key=self.api_key,
+            base_url=self.api_base,
+        )
 
     async def complete_json(
         self,
@@ -23,12 +33,9 @@ class OllamaProvider(BaseModelProvider):
         user_prompt: str,
         temperature: float = 0.1,
     ) -> dict[str, Any]:
-        """Call Ollama through LiteLLM and parse JSON output."""
-
         try:
-            response = await acompletion(
-                model=f"ollama/{model}",
-                api_base=self.api_base,
+            response = await self.client.chat.completions.create(
+                model=model,  # local-intent / cloud-chat 这种别名可以放这里
                 temperature=temperature,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -37,9 +44,11 @@ class OllamaProvider(BaseModelProvider):
             )
         except APIConnectionError as exc:
             raise RuntimeError(
-                f"Ollama is not reachable at {self.api_base}. "
-                "Start the VS Code task 'Ensure Ollama Server' or run 'ollama serve'."
+                f"LiteLLM proxy is not reachable at {self.api_base}. "
+                "Start the VS Code task 'Start LiteLLM Proxy' or run "
+                "'.venv/bin/litellm --config core/config/litellm.config.yaml --port 4000'."
             ) from exc
+
         content = response.choices[0].message.content
         if not content:
             raise ValueError("Empty model response")
@@ -47,9 +56,8 @@ class OllamaProvider(BaseModelProvider):
         return self._parse_json(content)
 
     def _parse_json(self, content: str) -> dict[str, Any]:
-        """Parse a JSON object from model output."""
-
         cleaned = content.strip()
+
         if cleaned.startswith("```"):
             cleaned = re.sub(r"^```(?:json)?", "", cleaned).strip()
             cleaned = re.sub(r"```$", "", cleaned).strip()

@@ -52,7 +52,14 @@ class ModelRouter:
         )
 
         if not preparation["provider_ready"] or not preparation["model_ready"]:
-            raise RuntimeError(f"Model resource is not ready: {provider_name}/{model_name}")
+            backing = ""
+            if preparation.get("backing_provider") and preparation.get("backing_model"):
+                backing = f" backing={preparation['backing_provider']}/{preparation['backing_model']}"
+            raise RuntimeError(
+                f"Model resource is not ready: {provider_name}/{model_name}{backing} "
+                f"provider_ready={preparation['provider_ready']} "
+                f"model_ready={preparation['model_ready']}"
+            )
 
         provider = await self.provider_registry.load(provider_name, model_config=model_config)
 

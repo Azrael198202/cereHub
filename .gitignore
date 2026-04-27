@@ -19,7 +19,6 @@ build/
 *.egg-info/
 
 # IDE / editor local files
-.vscode/
 .idea/
 
 .env

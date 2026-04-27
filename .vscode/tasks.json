@@ -1,0 +1,62 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup venv and install requirements",
+      "type": "shell",
+      "command": "PY_CMD=\"$(command -v python3.14 || command -v python3.13 || command -v python3.12 || command -v python3.11 || command -v python3.10 || true)\"; if [ -z \"$PY_CMD\" ]; then echo 'Python 3.10+ is required for the LiteLLM proxy dependencies.'; exit 1; fi; TARGET_MM=\"$($PY_CMD -c 'import sys; print(f\"{sys.version_info.major}.{sys.version_info.minor}\")')\"; NEED_REBUILD=0; if [ ! -x .venv/bin/python ]; then NEED_REBUILD=1; else VENV_MM=\"$(./.venv/bin/python -c 'import sys; print(f\"{sys.version_info.major}.{sys.version_info.minor}\")')\"; if [ \"$VENV_MM\" != \"$TARGET_MM\" ]; then NEED_REBUILD=1; fi; fi; if [ \"$NEED_REBUILD\" -eq 1 ]; then \"$PY_CMD\" -m venv --clear .venv; fi; ./.venv/bin/python -m pip install --upgrade pip; ./.venv/bin/python -m pip install -r requirements.txt",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start LiteLLM Proxy",
+      "type": "shell",
+      "command": "if curl -fsS http://localhost:4000/v1/models >/dev/null 2>&1; then echo 'LiteLLM already running'; sleep 86400; else .venv/bin/litellm --config core/config/litellm.config.yaml --port 4000; fi",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "LiteLLM",
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "LiteLLM already running|Application startup complete|Uvicorn running|Running on"
+        }
+      }
+    },
+    {
+      "label": "Ensure Ollama Server",
+      "type": "shell",
+      "command": "if curl -fsS http://localhost:11434/api/tags >/dev/null 2>&1; then echo 'Ollama already running'; else ollama serve >/tmp/cerehub-ollama.log 2>&1 & for i in $(seq 1 30); do curl -fsS http://localhost:11434/api/tags >/dev/null 2>&1 && echo 'Ollama started' && exit 0; sleep 1; done; echo 'Ollama did not become ready. See /tmp/cerehub-ollama.log'; exit 1; fi",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Ensure local-intent model",
+      "type": "shell",
+      "command": "ollama list | grep -E '^qwen3:4b[[:space:]]' >/dev/null 2>&1 || ollama pull qwen3:4b",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Init + Local Model Stack",
+      "dependsOn": [
+        "Setup venv and install requirements",
+        "Ensure Ollama Server",
+        "Ensure local-intent model",
+        "Start LiteLLM Proxy"
+      ],
+      "dependsOrder": "sequence"
+    }
+  ]
+}

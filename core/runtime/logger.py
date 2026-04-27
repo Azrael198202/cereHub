@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import sys
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
@@ -46,12 +47,22 @@ def setup_logger(level: int = logging.INFO) -> None:
     if any(getattr(handler, "_cerehub_runtime_logger", False) for handler in root_logger.handlers):
         return
 
+    ''' remove existed console handler '''
+    for handler in root_logger.handlers[:]:
+        if isinstance(handler,logging.StreamHandler):
+            root_logger.removeFilter(handler)
+
+    ''' add info handler into file '''
     info_handler = _build_file_handler(INFO_LOG, logging.INFO)
     info_handler.addFilter(_BelowErrorFilter())
 
+    ''' add console handler (error only) '''
     error_handler = _build_file_handler(ERROR_LOG, logging.ERROR)
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setLevel(logging.ERROR)
+    console_handler.setFormatter(logging.Formatter(LOG_FORMAT,DATE_FORMAT))
 
-    for handler in (info_handler, error_handler):
+    for handler in (info_handler, error_handler, console_handler):
         handler._cerehub_runtime_logger = True
         root_logger.addHandler(handler)
 

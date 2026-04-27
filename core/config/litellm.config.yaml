@@ -1,0 +1,50 @@
+model_list:
+  - model_name: local-intent
+    litellm_params:
+      model: ollama_chat/qwen3:4b
+      api_base: http://localhost:11434
+      temperature: 0.1
+
+  - model_name: local-intent-instruct
+    litellm_params:
+      model: ollama_chat/qwen3:4b-instruct
+      api_base: http://localhost:11434
+      temperature: 0.1
+
+  - model_name: local-workflow
+    litellm_params:
+      model: ollama_chat/qwen3:8b
+      api_base: http://localhost:11434
+      temperature: 0.1
+
+  - model_name: local-reasoning
+    litellm_params:
+      model: ollama_chat/deepseek-r1:7b
+      api_base: http://localhost:11434
+      temperature: 0.1
+
+  - model_name: cloud-chat
+    litellm_params:
+      model: openai/gpt-4o-mini
+      api_key: os.environ/OPENAI_API_KEY
+      temperature: 0.3
+
+  - model_name: cloud-reasoning
+    litellm_params:
+      model: openai/gpt-4.1-mini
+      api_key: os.environ/OPENAI_API_KEY
+      temperature: 0.2
+
+router_settings:
+  routing_strategy: simple-shuffle
+  num_retries: 1
+  timeout: 30
+  fallbacks:
+    - local-intent:
+        - cloud-chat
+    - local-intent-instruct:
+        - cloud-chat
+    - local-workflow:
+        - cloud-reasoning
+    - local-reasoning:
+        - cloud-reasoning
