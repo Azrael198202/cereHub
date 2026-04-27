@@ -4,7 +4,7 @@ import json
 import re
 from typing import Any
 
-from litellm import completion
+from litellm import acompletion
 
 from core.models.providers.base import BaseModelProvider
 
@@ -24,7 +24,7 @@ class OllamaProvider(BaseModelProvider):
     ) -> dict[str, Any]:
         """Call Ollama through LiteLLM and parse JSON output."""
 
-        response = await completion(
+        response = await acompletion(
             model=f"ollama/{model}",
             api_base=self.api_base,
             temperature=temperature,

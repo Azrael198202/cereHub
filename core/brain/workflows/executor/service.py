@@ -70,7 +70,7 @@ async def execute_workflow(intent: IntentModel, workflow: WorkflowModel) -> tupl
             tool_calls = [{"tool_name": item["tool_name"], "status": "success", "input_ref": None, "output_ref": None, "error_reason": None} for item in resolved]
 
         elif step.name == "register_artifacts":
-            task_output = {"registered_artifact_ids": await register_artifacts(artifacts)}
+            task_output = {"registered_artifact_ids": register_artifacts(artifacts)}
 
         elif step.name == "analyze_request":
             task_output = {"normalized_request": intent.source_text.strip()}
