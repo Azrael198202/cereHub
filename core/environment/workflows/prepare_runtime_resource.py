@@ -4,6 +4,7 @@ import argparse
 import asyncio
 import json
 from pathlib import Path
+from typing import Optional
 
 from core.contracts.install_plan import ResourcePreparationResult
 from core.contracts.runtime_resource import RuntimeResource
@@ -98,7 +99,7 @@ class PrepareRuntimeResourceWorkflow:
         task_input: dict,
         task_output: dict,
         status: str,
-        error_reason: str | None = None,
+        error_reason: Optional[str] = None,
     ):
         return await build_trace(
             workflow_id=WORKFLOW_ID,

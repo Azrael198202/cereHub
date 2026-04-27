@@ -1,6 +1,8 @@
 '''Structured models for controlled installation plans and results.'''
 from __future__ import annotations
 
+from typing import Optional
+
 from pydantic import BaseModel, Field
 
 
@@ -11,7 +13,7 @@ class InstallCommand(BaseModel):
     command: list[str]
     requires_shell: bool = False
     risky: bool = False
-    reason: str | None = None
+    reason: Optional[str] = None
 
 
 class InstallPlan(BaseModel):

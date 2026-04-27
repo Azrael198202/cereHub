@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Optional
 
 from core.models.registry.provider_registry import ProviderRegistry
 from core.models.resource_preparer import ModelResourcePreparer
@@ -27,7 +27,7 @@ class ModelRouter:
     async def complete_json(self, task_type: str, user_prompt: str, system_prompt: str) -> dict[str, Any]:
         """Complete a JSON task using all candidates."""
 
-        last_error: Exception | None = None
+        last_error: Optional[Exception] = None
 
         for model_config in self.selector.get_candidates(task_type):
             try:

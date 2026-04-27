@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from typing import Any
+from typing import Any, Optional
 
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 
@@ -14,7 +14,7 @@ class HuggingFaceProvider(BaseModelProvider):
     Large models may require GPU, quantization, or sufficient memory.
     """
 
-    def __init__(self, local_path: str | None = None) -> None:
+    def __init__(self, local_path: Optional[str] = None) -> None:
         self.local_path = local_path
         self._pipelines: dict[str, Any] = {}
 

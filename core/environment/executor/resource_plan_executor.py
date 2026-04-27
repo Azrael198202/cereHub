@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import subprocess
+from typing import Optional
 
 from core.contracts.install_plan import CommandResult, InstallPlan
 from core.runtime.progress import progress_store
@@ -80,7 +81,7 @@ class ResourcePlanExecutor:
 
         return results
 
-    def _run_streaming(self, command, operation_id: str | None = None) -> CommandResult:
+    def _run_streaming(self, command, operation_id: Optional[str] = None) -> CommandResult:
         """Run a command and stream stdout/stderr into progress events."""
 
         if command.requires_shell:

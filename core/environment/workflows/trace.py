@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from datetime import datetime, UTC
+from datetime import datetime, timezone
+from typing import Optional
 
 
 class WorkflowTraceRecorder:
@@ -18,11 +19,11 @@ class WorkflowTraceRecorder:
         status: str,
         task_input: dict,
         task_output: dict,
-        error_reason: str | None = None,
+        error_reason: Optional[str] = None,
     ) -> dict:
         """Append a trace record."""
 
-        now = datetime.now(UTC).isoformat()
+        now = datetime.now(timezone.utc).isoformat()
         record = {
             "trace_id": f"trace_{workflow_id}_{step_index}",
             "workflow_id": workflow_id,

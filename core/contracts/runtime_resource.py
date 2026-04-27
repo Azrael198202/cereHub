@@ -1,7 +1,7 @@
 '''Defines the RuntimeResource model, which represents a resource required by a workflow, tool, model, or assistant at runtime.'''
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Optional
 from pydantic import BaseModel, Field
 
 
@@ -27,13 +27,13 @@ class RuntimeResource(BaseModel):
     resource_id: str
     resource_type: ResourceType
     name: str
-    provider: str | None = None
-    version: str | None = None
+    provider: Optional[str] = None
+    version: Optional[str] = None
     required: bool = True
     install_strategy: list[str] = Field(default_factory=list)
     install_commands: list[list[str]] = Field(default_factory=list)
-    verification_command: list[str] | None = None
-    healthcheck_url: str | None = None
+    verification_command: Optional[list[str]] = None
+    healthcheck_url: Optional[str] = None
     dependencies: list[str] = Field(default_factory=list)
     status: str = "unknown"
     metadata: dict = Field(default_factory=dict)

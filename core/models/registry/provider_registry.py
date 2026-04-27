@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import importlib
-from typing import Any
+from typing import Any, Optional
 
 from core.config.config_loader import SETTINGS
 
@@ -15,7 +15,7 @@ class ProviderRegistry:
         "huggingface": "core.models.providers.huggingface_provider.HuggingFaceProvider",
     }
 
-    async def load(self, provider_name: str, model_config: dict | None = None) -> Any:
+    async def load(self, provider_name: str, model_config: Optional[dict] = None) -> Any:
         """Load a provider instance dynamically."""
 
         if provider_name not in self.BUILTIN_PROVIDERS:
