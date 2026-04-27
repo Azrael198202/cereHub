@@ -4,7 +4,7 @@
     {
       "label": "Setup venv and install requirements",
       "type": "shell",
-      "command": "PY_CMD=\"$(command -v python3.14 || command -v python3.13 || command -v python3.12 || command -v python3.11 || command -v python3.10 || true)\"; if [ -z \"$PY_CMD\" ]; then echo 'Python 3.10+ is required for the LiteLLM proxy dependencies.'; exit 1; fi; TARGET_MM=\"$($PY_CMD -c 'import sys; print(f\"{sys.version_info.major}.{sys.version_info.minor}\")')\"; NEED_REBUILD=0; if [ ! -x .venv/bin/python ]; then NEED_REBUILD=1; else VENV_MM=\"$(./.venv/bin/python -c 'import sys; print(f\"{sys.version_info.major}.{sys.version_info.minor}\")')\"; if [ \"$VENV_MM\" != \"$TARGET_MM\" ]; then NEED_REBUILD=1; fi; fi; if [ \"$NEED_REBUILD\" -eq 1 ]; then \"$PY_CMD\" -m venv --clear .venv; fi; ./.venv/bin/python -m pip install --upgrade pip; ./.venv/bin/python -m pip install -r requirements.txt",
+      "command": "export PYENV_ROOT=\"$HOME/.pyenv\"; export PATH=\"$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH\"; eval \"$(pyenv init -)\"; pyenv local 3.11.9; PY_CMD=\"$(pyenv which python)\"; TARGET_MM=\"$($PY_CMD -c 'import sys; print(f\"{sys.version_info.major}.{sys.version_info.minor}\")')\"; NEED_REBUILD=0; if [ \"$TARGET_MM\" != \"3.11\" ]; then echo \"Python 3.11 is required, got $TARGET_MM\"; exit 1; fi; if [ ! -x .venv/bin/python ]; then NEED_REBUILD=1; else VENV_MM=\"$(./.venv/bin/python -c 'import sys; print(f\"{sys.version_info.major}.{sys.version_info.minor}\")')\"; if [ \"$VENV_MM\" != \"3.11\" ]; then NEED_REBUILD=1; fi; fi; if [ \"$NEED_REBUILD\" -eq 1 ]; then \"$PY_CMD\" -m venv --clear .venv; fi; ./.venv/bin/python -m pip install --upgrade pip; ./.venv/bin/python -m pip install -r requirements.txt; ./.venv/bin/python -m pip install litellm openai",
       "options": {
         "cwd": "${workspaceFolder}"
       },
@@ -13,7 +13,7 @@
     {
       "label": "Start LiteLLM Proxy",
       "type": "shell",
-      "command": "if curl -fsS http://localhost:4000/v1/models >/dev/null 2>&1; then echo 'LiteLLM already running'; sleep 86400; else .venv/bin/litellm --config core/config/litellm.config.yaml --port 4000; fi",
+      "command": "if curl -fsS http://localhost:4000/v1/models >/dev/null 2>&1; then echo 'LiteLLM already running'; sleep 86400; else ./.venv/bin/litellm --config core/config/litellm.config.yaml --port 4000; fi",
       "options": {
         "cwd": "${workspaceFolder}"
       },
