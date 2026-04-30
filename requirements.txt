@@ -6,4 +6,10 @@ litellm[proxy]==1.83.0
 httpx>=0.23.0,<1.0
 python-dotenv
 PyYAML>=6.0.1,<7.0
-mcp>=1.25.0,<2.0; python_version >= "3.10"
+mcp>=1.25.0,<2.0
+python_version >= "3.10"
+langgraph 
+langchain-core 
+langchain-community
+langchain-openai
+dashscope
